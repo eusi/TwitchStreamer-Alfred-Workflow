@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string></string>
+	<key>connections</key>
+	<dict>
+		<key>6F23080D-EAF4-458E-89F7-FA76D83BCDCE</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>47CB62D4-D704-489C-A306-56CD76A1F208</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Christoph Friegel</string>
+	<key>description</key>
+	<string>Check who is Streaming on twitch.tv and watch your favorite Stream via LiveStreamer on VLC.</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Twitch Streamer v0.5</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>livestreamer {query} high</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.terminalcommand</string>
+			<key>uid</key>
+			<string>47CB62D4-D704-489C-A306-56CD76A1F208</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>126</integer>
+				<key>keyword</key>
+				<string>tw</string>
+				<key>runningsubtext</key>
+				<string>Searching TwitchStreamer ...</string>
+				<key>script</key>
+				<string>require('workflows.php');
+require('simple_html_dom.php');
+$w = new Workflows();
+
+$in  = urlencode("{query}");
+$path = "http://MY_WEB_SERVER/twitch/";
+$url = $path . "ALL.php?game=".$in;
+
+$html = file_get_html( $url );
+$first = true; //only for this version
+
+foreach($html-&gt;find( 'tr' ) as $row) {
+	if ( $first ):
+		$first = false;
+		continue;
+	endif;
+
+	$game = $row-&gt;find( 'td.game',0 )-&gt;plaintext;
+
+	//$avatar = $row-&gt;find( 'img.avatarimg',0 );
+	//$avatar2 = $avatar-&gt;src;
+	//$gameicon = $path.''.$game2;
+
+	$viewers = $row-&gt;find( 'td.viewers',0 );
+	$title = $row-&gt;find( 'td.title',0 );
+
+	$streamerUrl = $row-&gt;find( 'td.url',0 );	
+	$streamUrl = $row-&gt;find( 'a',0 )-&gt;href;	
+
+	$w-&gt;result( 'Searching TwitchStreamer', 
+				$streamUrl, 
+				$title-&gt;plaintext, 
+				$viewers-&gt;plaintext . ' Viewers - ' . $game, 
+				'icon.png',
+				'yes' 
+			);
+}
+
+if ( count( $w-&gt;results() ) == 0 ) {
+	$w-&gt;result( '', '', 'Game not found or no one is playing it. Try another!', ':-(', 'icon.png', 'no' );
+}
+
+echo $w-&gt;toxml();</string>
+				<key>title</key>
+				<string>Search TwitchStreamer</string>
+				<key>type</key>
+				<integer>1</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>6F23080D-EAF4-458E-89F7-FA76D83BCDCE</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>47CB62D4-D704-489C-A306-56CD76A1F208</key>
+		<dict>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
+		<key>6F23080D-EAF4-458E-89F7-FA76D83BCDCE</key>
+		<dict>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>https://github.com/eusi/alfred2-twitch-streamer</string>
+</dict>
+</plist>
