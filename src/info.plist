@@ -25,7 +25,7 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>Twitch Streamer v0.5</string>
+	<string>Twitch Streamer v1.0</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -56,38 +56,21 @@
 				<string>Searching TwitchStreamer ...</string>
 				<key>script</key>
 				<string>require('workflows.php');
-require('simple_html_dom.php');
+require('search.php');
+
 $w = new Workflows();
+$in  = "{query}";
+$s = main();
 
-$in  = urlencode("{query}");
-$path = "http://MY_WEB_SERVER/twitch/";
-$url = $path . "ALL.php?game=".$in;
-
-$html = file_get_html( $url );
-$first = true; //only for this version
-
-foreach($html-&gt;find( 'tr' ) as $row) {
-	if ( $first ):
-		$first = false;
+foreach ($s as $key =&gt; $sele) {
+  if($in != "") {
+    if(strpos( strtolower($sele['game']), strtolower($in)) === false)
 		continue;
-	endif;
-
-	$game = $row-&gt;find( 'td.game',0 )-&gt;plaintext;
-
-	//$avatar = $row-&gt;find( 'img.avatarimg',0 );
-	//$avatar2 = $avatar-&gt;src;
-	//$gameicon = $path.''.$game2;
-
-	$viewers = $row-&gt;find( 'td.viewers',0 );
-	$title = $row-&gt;find( 'td.title',0 );
-
-	$streamerUrl = $row-&gt;find( 'td.url',0 );	
-	$streamUrl = $row-&gt;find( 'a',0 )-&gt;href;	
-
-	$w-&gt;result( 'Searching TwitchStreamer', 
-				$streamUrl, 
-				$title-&gt;plaintext, 
-				$viewers-&gt;plaintext . ' Viewers - ' . $game, 
+  }
+  $w-&gt;result(    $key, 
+				$sele['url'], 
+				$sele['channel'] . '   -   ' . $sele['title'], 
+				$sele['viewers'] . ' Viewers - ' . $sele['game'], 
 				'icon.png',
 				'yes' 
 			);
