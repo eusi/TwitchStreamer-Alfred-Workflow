@@ -1,10 +1,12 @@
-<?php //namespace anlutro\TwitchTv;
+<?php
 
 /**
  * Parses and stores information about a Twitch.tv stream.
  *
  * @version    2.0
  * @author     Andreas Lutro <anlutro@gmail.com>
+ *
+ * Version modified by Christoph Friegel <eusi.cf@gmail.com>
  */
 class Stream
 {
