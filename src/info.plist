@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string></string>
+	<string>com.eusi.alfred.twitchstreamer</string>
 	<key>connections</key>
 	<dict>
 		<key>6F23080D-EAF4-458E-89F7-FA76D83BCDCE</key>
@@ -25,7 +25,7 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>Twitch Streamer v1.0</string>
+	<string>TwitchStreamer v1.1</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -53,14 +53,14 @@
 				<key>keyword</key>
 				<string>tw</string>
 				<key>runningsubtext</key>
-				<string>Searching TwitchStreamer ...</string>
+				<string>Searching for streamers on twitch.tv ...</string>
 				<key>script</key>
 				<string>require('workflows.php');
 require('search.php');
 
-$w = new Workflows();
 $in  = "{query}";
-$s = main();
+$w = new Workflows();
+$s = search();
 
 foreach ($s as $key =&gt; $sele) {
   if($in != "") {
@@ -81,6 +81,8 @@ if ( count( $w-&gt;results() ) == 0 ) {
 }
 
 echo $w-&gt;toxml();</string>
+				<key>subtext</key>
+				<string>List all the steamers who are online.</string>
 				<key>title</key>
 				<string>Search TwitchStreamer</string>
 				<key>type</key>
@@ -103,12 +105,12 @@ echo $w-&gt;toxml();</string>
 		<key>47CB62D4-D704-489C-A306-56CD76A1F208</key>
 		<dict>
 			<key>ypos</key>
-			<real>130</real>
+			<real>20</real>
 		</dict>
 		<key>6F23080D-EAF4-458E-89F7-FA76D83BCDCE</key>
 		<dict>
 			<key>ypos</key>
-			<real>130</real>
+			<real>20</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>
