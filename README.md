@@ -19,7 +19,7 @@ The streamer list is sorted by featured streamer and number of viewers descendin
 
 
 ### Download
-**[DOWNLOAD](https://github.com/eusi/alfred2-twitch-streamer/blob/master/workflow/TwitchStreamer%20v1.0.alfredworkflow)**
+**[DOWNLOAD](https://github.com/eusi/alfred2-twitch-streamer/blob/master/workflow/TwitchStreamer%20v1.0.alfredworkflow?raw=true)**
 
 
 ### Known Bugs
