@@ -47,7 +47,7 @@ GNU General Public License version 3
 
 * First real release without webserver.
 * Added Alleyoop support.
-* Downgraded Workflows from 3.2 to 3.0 due to a sort-bug
+* Downgraded Workflows from 0.32 to 0.3 due to a sort-bug
 
 
 ## 0.5.0
