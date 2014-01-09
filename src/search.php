@@ -3,7 +3,7 @@
 /**
  * Parses and stores information about a Twitch.tv stream.
  *
- * @version    1.0
+ * @version    1.1
  * @author     Christoph Friegel <eusi.cf@gmail.com>
  */
 
@@ -97,9 +97,9 @@
 	}
 
     /**
-     * start method
+     * start-method
      */
-	function main() {
+	function search() {
 		$streamer = array();
 		$streamer = getAllLOLStreamer();
 
