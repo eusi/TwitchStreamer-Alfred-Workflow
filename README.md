@@ -28,11 +28,11 @@ The streamer list is sorted by featured streamer (first) and number of viewers d
 * it would be great to have an icon á game, but without web images its a lil overkill I think (twitch.tv streams more than 250 different games per day = 250 icons + future support for new games), maybe we could create game icons for the most famous games
 
 
-## Contact
+## Contacts
 
 If you have found bugs/issues or if you just want to say "hello" so send me an email: eusi.cf@gmail.com
 
-<a href="https://github.com/ruedap"><img src="https://2.gravatar.com/avatar/d954b2ec10b10436505ae62fe972df97?d=https%3A%2F%2Fidenticons.github.com%2Fe098fc2b57681a6f25ba17badf99aa6f.png&r=x&s=440" alt="eusi" title="eusi" width="100" height="100"></a>
+<a href="https://github.com/eusi"><img src="https://2.gravatar.com/avatar/d954b2ec10b10436505ae62fe972df97?d=https%3A%2F%2Fidenticons.github.com%2Fe098fc2b57681a6f25ba17badf99aa6f.png&r=x&s=440" alt="eusi" title="eusi" width="100" height="100"></a>
 
 
 ## License
