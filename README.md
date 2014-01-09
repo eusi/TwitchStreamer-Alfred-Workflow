@@ -11,14 +11,14 @@ The streamer list is sorted by featured streamer (first) and number of viewers d
 
 
 ## Screenshot 1: Searching
-![Workflow Screenshot](https://github.com/eusi/alfred2-twitch-streamer/blob/master/workflow/workflow1.jpg?raw=true)
+![Workflow Screenshot](https://github.com/eusi/alfred2-twitch-streamer/blob/master/screenshots/workflow1.jpg?raw=true)
 
 ## Screenshot 2: Watching
-![Workflow Screenshot](https://github.com/eusi/alfred2-twitch-streamer/blob/master/workflow/workflow2.jpg?raw=true)
+![Workflow Screenshot](https://github.com/eusi/alfred2-twitch-streamer/blob/master/screenshots/workflow2.jpg?raw=true)
 
 
 ## Download
-**[DOWNLOAD](https://github.com/eusi/alfred2-twitch-streamer/blob/master/workflow/TwitchStreamer%20v1.0.alfredworkflow?raw=true)**
+**[DOWNLOAD](https://github.com/eusi/alfred2-twitch-streamer/blob/master/workflow/TwitchStreamer.alfredworkflow?raw=true)**
 
 
 ## Issues
@@ -32,7 +32,7 @@ The streamer list is sorted by featured streamer (first) and number of viewers d
 
 If you have found bugs/issues or if you just want to say "hello" so send me an email: eusi.cf@gmail.com
 
-<a href="https://github.com/ruedap"><img src="https://dl.dropboxusercontent.com/u/281168/images/github-ruedap-avatar-1500x1500.png" alt="ruedap" title="ruedap" width="100" height="100"></a>
+<a href="https://github.com/ruedap"><img src="https://2.gravatar.com/avatar/d954b2ec10b10436505ae62fe972df97?d=https%3A%2F%2Fidenticons.github.com%2Fe098fc2b57681a6f25ba17badf99aa6f.png&r=x&s=440" alt="eusi" title="eusi" width="100" height="100"></a>
 
 
 ## License
