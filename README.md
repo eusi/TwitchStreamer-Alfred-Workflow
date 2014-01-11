@@ -32,7 +32,14 @@ The streamer list is sorted by featured streamer (first) and number of viewers d
 
 
 ## Download
-**[DOWNLOAD](https://github.com/eusi/alfred2-twitch-streamer/blob/master/workflow/TwitchStreamer.alfredworkflow?raw=true)**
+
+Required: [Livestreamer](https://github.com/chrippa/livestreamer) and [VLC](http://www.videolan.org/vlc/index.html)
+
+Made in/with OSX 10.9.1, livestreamer 1.7.2, VLC 2.1.2, PHP 5.3, Twitch-API/v3
+
+Supports AlleyOop/Monkey Patch
+
+**[DOWNLOAD HERE](https://github.com/eusi/alfred2-twitch-streamer/blob/master/workflow/TwitchStreamer.alfredworkflow?raw=true)**
 
 
 ## Issues
@@ -69,7 +76,7 @@ GNU General Public License version 3
 ## 1.1.0
 
 * First real release without webserver.
-* Added Alleyoop support.
+* Added AlleyOop/Monkey Patch support.
 * Downgraded Workflows from 0.32 to 0.3 due to a sort-bug
 
 
