@@ -6,7 +6,20 @@
 	<string>com.eusi.alfred.twitchstreamer</string>
 	<key>connections</key>
 	<dict>
+		<key>063A7CBB-7169-483A-99AD-66892911F870</key>
+		<array/>
 		<key>6F23080D-EAF4-458E-89F7-FA76D83BCDCE</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>47CB62D4-D704-489C-A306-56CD76A1F208</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>8CF1B7C5-96CE-4B5A-9F95-7462E4753234</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
@@ -25,9 +38,64 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>TwitchStreamer v1.1</string>
+	<string>TwitchStreamer v1.3</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>126</integer>
+				<key>keyword</key>
+				<string>twtop</string>
+				<key>runningsubtext</key>
+				<string>Searching for streamers on twitch.tv ...</string>
+				<key>script</key>
+				<string>require('workflows.php');
+require('search.php');
+
+//number of streams sorted by number of viewers descending (max 100)
+$limit = 50; 
+
+$w = new Workflows();
+$s = getTwitchStreams( $limit );
+
+if($s != null) {
+	foreach ($s as $key =&gt; $sele) {
+    		$w-&gt;result(	$key, 
+					$sele['url'], 
+					$sele['streamer'] . '   -   ' . $sele['title'], 
+					$sele['viewers'] . ' Viewers - ' . $sele['game'], 
+					'icon.png',
+					'yes' 
+				  );
+	}
+}
+else {
+	 $w-&gt;result( '', '', 'No streams online? This is impossible!', 
+                 'Either you or twitch.tv is offline! Check your ' .
+                 'internet connection first.', 'icon.png', 'no' );
+}
+
+echo $w-&gt;toxml();</string>
+				<key>subtext</key>
+				<string>List all the steamers who are online.</string>
+				<key>title</key>
+				<string>Search TOP Streamer (live)</string>
+				<key>type</key>
+				<integer>1</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>6F23080D-EAF4-458E-89F7-FA76D83BCDCE</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -47,44 +115,45 @@
 			<key>config</key>
 			<dict>
 				<key>argumenttype</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>escaping</key>
 				<integer>126</integer>
 				<key>keyword</key>
-				<string>tw</string>
+				<string>twgame</string>
 				<key>runningsubtext</key>
-				<string>Searching for streamers on twitch.tv ...</string>
+				<string>Searching for game(s) on twitch.tv ...</string>
 				<key>script</key>
 				<string>require('workflows.php');
 require('search.php');
 
-$in  = "{query}";
+//number of games sorted by popularity (max 100)
+$limit = 50; 
+$q = urlencode( "{query}" );
+
 $w = new Workflows();
-$s = search();
+$s = searchGame( $q, $limit );
 
-foreach ($s as $key =&gt; $sele) {
-  if($in != "") {
-    if(strpos( strtolower($sele['game']), strtolower($in)) === false)
-		continue;
-  }
-  $w-&gt;result(    $key, 
-				$sele['url'], 
-				$sele['channel'] . '   -   ' . $sele['title'], 
-				$sele['viewers'] . ' Viewers - ' . $sele['game'], 
-				'icon.png',
-				'yes' 
-			);
+if($s != null) {
+	foreach ($s as $key =&gt; $sele) {
+    		$w-&gt;result(	$key, 
+					'', 
+					$sele['name'], 
+					'Popularity: ' . $sele['popularity'], 
+					'icon.png',
+					'yes',
+					$sele['name']
+				  );
+	}
 }
-
-if ( count( $w-&gt;results() ) == 0 ) {
-	$w-&gt;result( '', '', 'Game not found or no one is playing it. Try another!', ':-(', 'icon.png', 'no' );
+else {
+	 $w-&gt;result( '', '', 'No stream or game found!', 
+                 'Try again!', 'icon.png', 'no' );
 }
-
 echo $w-&gt;toxml();</string>
 				<key>subtext</key>
-				<string>List all the steamers who are online.</string>
+				<string>Search games which are live on twitch.tv.</string>
 				<key>title</key>
-				<string>Search TwitchStreamer</string>
+				<string>Search Games '...'</string>
 				<key>type</key>
 				<integer>1</integer>
 				<key>withspace</key>
@@ -93,24 +162,111 @@ echo $w-&gt;toxml();</string>
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>6F23080D-EAF4-458E-89F7-FA76D83BCDCE</string>
+			<string>063A7CBB-7169-483A-99AD-66892911F870</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>126</integer>
+				<key>keyword</key>
+				<string>tw</string>
+				<key>runningsubtext</key>
+				<string>Searching for stream(s) on twitch.tv ...</string>
+				<key>script</key>
+				<string>require('workflows.php');
+require('search.php');
+
+//number of streams sorted by number of viewers descending (max 100)
+$limit = 25; 
+$q = urlencode( "{query}" );
+
+$w = new Workflows();
+$s = searchStream( $q, $limit );
+
+if($s != null) {
+	foreach ($s as $key =&gt; $sele) {
+    		$w-&gt;result(	$key, 
+					$sele['url'], 
+					$sele['streamer'] . '   -   ' . $sele['title'], 
+					$sele['viewers'] . ' Viewers - ' . $sele['game'], 
+					'icon.png',
+					'yes' 
+				  );
+	}
+}
+elseif( strlen( $q ) &lt; 3 ) {
+	 $w-&gt;result( '', '', 'Please wait for result or make sure you have ' . 
+              'typed in at least 3 letters.', 
+              'Searching for stream(s) on twitch.tv ...','icon.png','no' );
+}
+else {
+	 $w-&gt;result( '', '', 'No stream or game found! Try another!', 
+     'Stream is probably offline or you made a typo.', 'icon.png', 'no' );
+}
+echo $w-&gt;toxml();</string>
+				<key>subtext</key>
+				<string>Search streams who are online on twitch.tv.</string>
+				<key>title</key>
+				<string>Search Streams '...'</string>
+				<key>type</key>
+				<integer>1</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>8CF1B7C5-96CE-4B5A-9F95-7462E4753234</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
 	</array>
 	<key>readme</key>
-	<string></string>
+	<string>keywords and description:
+————————————————————————————————
+twtop = top50 live streams on twitch.tv (sort by number of viewers)
+tw = searching for a specific stream (game or channel/streamer)
+optional: twgame = searching for a specific game which has streams
+
+examples:
+————————————————————————————————
+twtop
+
+tw warcraft (searches for streams of „world of warcraft“ or „warcraft3“ as well as streams of a streamer who is called like „warcraftBoy“)
+
+optional: twgame world (lists a list of games like „world of warcraft“ - in future: you can select one of them like wow, that leeds you to „tw world of warcraft“ s.a.)
+
+known bugs:
+————————————————————————————————
+- optional function „twgame“:
+  twgame warcraft does not find „world of warcraft“, twgame w does
+- sorting a bit broken in „twtop“</string>
 	<key>uidata</key>
 	<dict>
+		<key>063A7CBB-7169-483A-99AD-66892911F870</key>
+		<dict>
+			<key>ypos</key>
+			<real>140</real>
+		</dict>
 		<key>47CB62D4-D704-489C-A306-56CD76A1F208</key>
 		<dict>
 			<key>ypos</key>
-			<real>20</real>
+			<real>140</real>
 		</dict>
 		<key>6F23080D-EAF4-458E-89F7-FA76D83BCDCE</key>
 		<dict>
 			<key>ypos</key>
 			<real>20</real>
+		</dict>
+		<key>8CF1B7C5-96CE-4B5A-9F95-7462E4753234</key>
+		<dict>
+			<key>ypos</key>
+			<real>260</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>

@@ -1,115 +1,117 @@
 <?php
 
-/**
- * Parses and stores information about a Twitch.tv stream.
- *
- * @version    1.1
- * @author     Christoph Friegel <eusi.cf@gmail.com>
- */
-
     /**
-     * stream class
+     * Add all stream data from the Twitch.tv JSON API.
+     * 
+     * @param int $limit 
+	 * (maximum number of streams sorted by number of viewers descending)
      */
-	require_once('stream.php');
-
-    /**
-     * full streamer list (category: gaming!)
-     */
-	$url = 'http://api.justin.tv/api/stream/list.json?featured=true&category=gaming';
-
-
-    /**
-     * method for sorting a multid. array
-     */
-	function aasort (&$array, $key) {
-	    $sorter=array();
-	    $ret=array();
-	    reset($array);
-	    foreach ($array as $ii => $va) {
-	        $sorter[$ii]=$va[$key];
-	    }
-	    arsort($sorter); //asort
-	    foreach ($sorter as $ii => $va) {
-	        $ret[$ii]=$array[$ii];
-	    }
-	    $array=$ret;
-	}
-
-    /**
-     * method to get all streamer who are online at the moment
-     */
-	function getAllLOLStreamer() {
-		global $url;
+	function getTwitchStreams( $limit ) {
+		//https://github.com/justintv/Twitch-API/blob/master/v3_resources/streams.md
+		$url = 'https://api.twitch.tv/kraken/streams?limit=' . $limit; 
 		$json = file_get_contents($url);
 
 		if (!$json) {
 			return false;
 		}
 
-		$obj = json_decode($json);
-		$newObj = array();
-		
-		foreach ($obj as $ele) {
-			array_push( $newObj, $ele->{'channel'}->{'channel_url'} );
-		}
-		return $newObj;
-	}
-
-    /**
-     * method to create a correct 'stream'-obj á streamer
-     */
-	function createStreamObjects($allStreamer) {
-		$mystreams = array();
-
-		for ($i = 0; $i < count($allStreamer); $i++) {
-
-			$mystreams[] = new Stream(array(
-				'url' => "http://www.twitch.tv/" . substr($allStreamer[$i], 21), // parses URLs just fine...
-				'myname' => substr($allStreamer[$i], 21)
-			));
-		}
-
-		return $mystreams;
-	}
-
-    /**
-     * method to create a streamer-list (normalized and sorted)
-     */
-	function createStreamerList($mystreams) {
-		$thisArrayIsGood = array();
-		$tempRay = array();
-
-		foreach ($mystreams as $stream) {
-		    if ($stream->isLive()) {
-				$tempRay['url'] = $stream->url;
-				$tempRay['title'] = $stream->stream_title;
-				$tempRay['viewers'] = $stream->stream_viewers;
-				$tempRay['channel'] = strtoupper($stream->channel);
-				//$tempRay['avatar'] = $stream->stream_avatar_tiny;
-				$tempRay['game'] = $stream->stream_game;
-				array_push($thisArrayIsGood, $tempRay);
-		    }
-		}
-		//aasort should not be necessary because of featured=true and new twitch api which focus viewer count
-		//aasort($thisArrayIsGood,"viewers");
-
-		return $thisArrayIsGood;
-	}
-
-    /**
-     * start-method
-     */
-	function search() {
-		$streamer = array();
-		$streamer = getAllLOLStreamer();
-
+		$data = json_decode($json)->streams;
 		$streams = array();
-		$streams = createStreamObjects( $streamer );
+		
+		if($data != null) {
+			foreach ($data as $key => $stream) {
+				$streams[$key]["title"] = $stream->channel->status;
+				$streams[$key]["streamer"] = $stream->channel->display_name;
+				$streams[$key]["viewers"] = $stream->viewers;
+				$streams[$key]["game"] = $stream->game;
+				$streams[$key]["url"] = $stream->channel->url;
+			}
+		}
+		return $streams;
+	}
 
-		$list = array();
-		$list = createStreamerList( $streams );
+	/*
+	// Alternative
+	function getTwitchStreams() {
+		$url = 'http://api.justin.tv/api/stream/list.json?category=gaming';
+		
+		$json = file_get_contents($url);
 
-		return $list;
+		if (!$json) {
+			return false;
+		}
+
+		$data = json_decode($json);
+		$streams = array();
+		
+		if($data != null) {
+			foreach ($data as $key => $stream) {
+				$streams[$key]["title"] = $stream->title;
+				$streams[$key]["streamer"] = strtoupper( $stream->channel->title );
+				$streams[$key]["viewers"] = $stream->channel_count;
+				$streams[$key]["game"] = $stream->channel->meta_game;
+				$streams[$key]["url"] = $stream->channel->channel_url;
+			}
+		}
+		return $streams;
+	}*/
+
+
+    /**
+     * Search streams and add channel stream data from the Twitch.tv JSON API.
+     * 
+     * @param String $q
+     * @param int $limit
+     */
+	function searchStream( $q, $limit ) {
+		//https://github.com/justintv/Twitch-API/blob/master/v3_resources/search.md
+		$url = 'https://api.twitch.tv/kraken/search/streams?q=' . $q . '&limit=' . $limit; 
+		$json = file_get_contents($url);
+
+		if (!$json) {
+			return false;
+		}
+
+		$data = json_decode($json)->streams;
+		$streams = array();
+		
+		if($data != null) {
+			foreach ($data as $key => $stream) {
+				$streams[$key]["title"] = $stream->channel->status;
+				$streams[$key]["streamer"] = $stream->channel->display_name;
+				$streams[$key]["viewers"] = $stream->viewers;
+				$streams[$key]["game"] = $stream->game;
+				$streams[$key]["url"] = $stream->channel->url;
+			}
+		}
+		return $streams;
+	}
+
+    /**
+     * Search games and add games data from the Twitch.tv JSON API.
+     * 
+     * @param String $q
+     * @param int $limit
+     */
+	function searchGame( $q, $limit ) {
+		//https://github.com/justintv/Twitch-API/blob/master/v3_resources/search.md
+		$url = 'https://api.twitch.tv/kraken/search/games?q=' . $q . '&type=suggest&live=true&limit=' . $limit; 
+		$json = file_get_contents($url);
+
+		if (!$json) {
+			return false;
+		}
+
+		$data = json_decode($json)->games;
+		$games = array();
+		
+		if($data != null) {
+			foreach ($data as $key => $game) {
+				$games[$key]["name"] = $game->name;
+				$games[$key]["popularity"] = $game->popularity;
+			}
+		}
+		return $games;
 	}
 
 ?>

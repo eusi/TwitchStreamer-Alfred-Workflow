@@ -1,7 +1,19 @@
 TwitchStreamer Workflow for [Alfred 2](http://www.alfredapp.com)
 ==============================
 
-Check who is streaming on Twitch.Tv (category gaming) and watch your favorite stream via [Livestreamer](https://github.com/chrippa/livestreamer) on [VLC](http://www.videolan.org/vlc/index.html).
+## Screenshot 1: Searching
+* keywords: `tw`, `twtop`
+
+* `twtop: shows top (online) streamer on twitch.tv with some informations
+
+* `tw: shows specific (online) streamer on twitch.tv with some informations
+
+* opens the selected stream in VLC (Livestreamer required)
+
+* example: `tw star` finds streamer like "starman" and "starcraft" streams
+
+
+Check who is streaming on Twitch.Tv (category gaming) and watch your favorite stream via [Livestreamer](https://github.com/chrippa/livestreamer) on [VLC](http://www.videolan.org/vlc/index.html) (no lags anymore, thanks to buffering).
 
 The keyword is `tw` and the second word is the game you want to watch (example: `tw league of legends` or simply `tw league`).
 
@@ -23,9 +35,11 @@ The streamer list is sorted by featured streamer (first) and number of viewers d
 
 ## Issues
 
-* it takes some time between entries (delay 5~10 Sec.) because of the twitch.tv-api
+* it takes a bit time between entries because of the twitch.tv-api
 
 * it would be great to have an icon á game, but without web images its a lil overkill I think (twitch.tv streams more than 250 different games per day = 250 icons + future support for new games), maybe we could create game icons for the most famous games
+
+* sorting of `twtop` seems to be a bit broken
 
 
 ## Contacts
@@ -42,6 +56,13 @@ GNU General Public License version 3
 
 
 #Changelog
+
+## 1.3.0
+
+* Big Update (reworked the whole code)
+* Added `twtop`
+* `tw` searches more efficient and games as well as streams
+
 
 ## 1.1.0
 
