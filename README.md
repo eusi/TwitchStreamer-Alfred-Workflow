@@ -1,7 +1,7 @@
 TwitchStreamer Workflow for [Alfred 2](http://www.alfredapp.com)
 ==============================
 
-## Screenshot 1: Searching
+## In Short
 * keywords: `tw`, `twtop`
 
 * `twtop: shows top (online) streamer on twitch.tv with some informations
@@ -12,6 +12,8 @@ TwitchStreamer Workflow for [Alfred 2](http://www.alfredapp.com)
 
 * example: `tw star` finds streamer like "starman" and "starcraft" streams
 
+
+## Description
 
 Check who is streaming on Twitch.Tv (category gaming) and watch your favorite stream via [Livestreamer](https://github.com/chrippa/livestreamer) on [VLC](http://www.videolan.org/vlc/index.html) (no lags anymore, thanks to buffering).
 
