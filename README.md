@@ -1,7 +1,21 @@
 TwitchStreamer Workflow for [Alfred 2](http://www.alfredapp.com)
 ==============================
 
-Check who is streaming on Twitch.Tv (category gaming) and watch your favorite stream via [Livestreamer](https://github.com/chrippa/livestreamer) on [VLC](http://www.videolan.org/vlc/index.html).
+## In Short
+* keywords: `tw`, `twtop`
+
+* `twtop: shows top (online) streamer on twitch.tv with some informations
+
+* `tw: shows specific (online) streamer on twitch.tv with some informations
+
+* opens the selected stream in VLC (Livestreamer required)
+
+* example: `tw star` finds streamer like "starman" and "starcraft" streams
+
+
+## Description
+
+Check who is streaming on Twitch.Tv (category gaming) and watch your favorite stream via [Livestreamer](https://github.com/chrippa/livestreamer) on [VLC](http://www.videolan.org/vlc/index.html) (no lags anymore, thanks to buffering).
 
 The keyword is `tw` and the second word is the game you want to watch (example: `tw league of legends` or simply `tw league`).
 
@@ -18,14 +32,23 @@ The streamer list is sorted by featured streamer (first) and number of viewers d
 
 
 ## Download
-**[DOWNLOAD](https://github.com/eusi/alfred2-twitch-streamer/blob/master/workflow/TwitchStreamer.alfredworkflow?raw=true)**
+
+Required: [Livestreamer](https://github.com/chrippa/livestreamer) and [VLC](http://www.videolan.org/vlc/index.html)
+
+Made in/with OSX 10.9.1, livestreamer 1.7.2, VLC 2.1.2, PHP 5.3, Twitch-API/v3
+
+Supports AlleyOop/Monkey Patch
+
+**[DOWNLOAD HERE](https://github.com/eusi/alfred2-twitch-streamer/blob/master/workflow/TwitchStreamer.alfredworkflow?raw=true)**
 
 
 ## Issues
 
-* it takes some time between entries (delay 5~10 Sec.) because of the twitch.tv-api
+* it takes a bit time between entries because of the twitch.tv-api
 
 * it would be great to have an icon á game, but without web images its a lil overkill I think (twitch.tv streams more than 250 different games per day = 250 icons + future support for new games), maybe we could create game icons for the most famous games
+
+* sorting of `twtop` seems to be a bit broken
 
 
 ## Contacts
@@ -43,10 +66,17 @@ GNU General Public License version 3
 
 #Changelog
 
+## 1.3.0
+
+* Big Update (reworked the whole code)
+* Added `twtop`
+* `tw` searches more efficient and games as well as streams
+
+
 ## 1.1.0
 
 * First real release without webserver.
-* Added Alleyoop support.
+* Added AlleyOop/Monkey Patch support.
 * Downgraded Workflows from 0.32 to 0.3 due to a sort-bug
 
 
