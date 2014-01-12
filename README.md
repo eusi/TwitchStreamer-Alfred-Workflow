@@ -2,11 +2,15 @@ TwitchStreamer Workflow for [Alfred 2](http://www.alfredapp.com)
 ==============================
 
 ## In Short
-* keywords: `tw`, `twtop`
+* keywords: `tw`, `twtop`, `twgame`, `twcover`
 
-* `twtop: shows top (online) streamer on twitch.tv with some informations
+* `twtop`: shows top (online) streamer on twitch.tv with some informations
 
-* `tw: shows specific (online) streamer on twitch.tv with some informations
+* `tw`: shows specific (online) streamer on twitch.tv with some informations
+
+* `twgame`: search games, result leads to `tw ` (optional)
+
+* `twcover`: download and convert game covers (optional, you only have to use it once you want to download many new game covers)
 
 * opens the selected stream in VLC (Livestreamer required)
 
@@ -17,18 +21,34 @@ TwitchStreamer Workflow for [Alfred 2](http://www.alfredapp.com)
 
 Check who is streaming on Twitch.Tv (category gaming) and watch your favorite stream via [Livestreamer](https://github.com/chrippa/livestreamer) on [VLC](http://www.videolan.org/vlc/index.html) (no lags anymore, thanks to buffering).
 
-The keyword is `tw` and the second word is the game you want to watch (example: `tw league of legends` or simply `tw league`).
+The main keyword is `tw` and the second word is the game or stream you want to watch (examples: `tw voyboy` or `tw league of legends` or also simply `tw league`). Alternative: Use keyword `twtop` to see the current TOP streams. Limit of streams is changable, 50 by default.
 
 With `enter` you can open the stream via Terminal (Livestreamer) on VLC. The Terminal has to be open (in background) while you watch the stream. If you close the Terminal the stream will be shutting down.
 
-The streamer list is sorted by featured streamer (first) and number of viewers descending. The quality of the stream is "high". If you want to change it to best (e.g.), feel free to open the existing "Terminal Command" (alfred, workflow-window) and modify the Livestreamer line.
+The streamer list is sorted by number of viewers descending. The quality of the stream is "high". If you want to change it to best (e.g.), feel free to open the existing "Terminal Command" (alfred, workflow-window) and modify the Livestreamer line.
+
+Optional: If you have no idea which game you want to watch or you want to search a game, use `twgame`. For example: `twgame world` it lists something like World of Warcraft. If you click on one of them like "World War", it leads you to `tw World War` which shows you live streams in this category.
+
+Optional 2: If you deleted your game cover folder you should use `twcover` to download all the top game covers. Otherwise `tw ` or `twtop` will do it, but it takes more time and downloads less covers. 
 
 
-## Screenshot 1: Searching
+## Screenshot 1: Searching TOP
 ![Workflow Screenshot](https://github.com/eusi/alfred2-twitch-streamer/blob/master/screenshots/workflow1.jpg?raw=true)
 
-## Screenshot 2: Watching
+## Screenshot 2: Searching GAME
 ![Workflow Screenshot](https://github.com/eusi/alfred2-twitch-streamer/blob/master/screenshots/workflow2.jpg?raw=true)
+
+## Screenshot 3: Searching STREAM
+![Workflow Screenshot](https://github.com/eusi/alfred2-twitch-streamer/blob/master/screenshots/workflow3.jpg?raw=true)
+
+## Screenshot 4: Browsing GAMES (leads to Screenshot 2)
+![Workflow Screenshot](https://github.com/eusi/alfred2-twitch-streamer/blob/master/screenshots/workflow4.jpg?raw=true)
+
+## Screenshot 5: Downloading GAME COVERS
+![Workflow Screenshot](https://github.com/eusi/alfred2-twitch-streamer/blob/master/screenshots/workflow5.png?raw=true)
+
+## Screenshot 6: Watching STREAM
+![Workflow Screenshot](https://github.com/eusi/alfred2-twitch-streamer/blob/master/screenshots/workflow6.jpg?raw=true)
 
 
 ## Download
@@ -44,11 +64,7 @@ Supports AlleyOop/Monkey Patch
 
 ## Issues
 
-* it takes a bit time between entries because of the twitch.tv-api
-
-* it would be great to have an icon á game, but without web images its a lil overkill I think (twitch.tv streams more than 250 different games per day = 250 icons + future support for new games), maybe we could create game icons for the most famous games
-
-* sorting of `twtop` seems to be a bit broken
+* it takes a lil time between entries because of the twitch.tv-api
 
 
 ## Contacts
@@ -65,6 +81,13 @@ GNU General Public License version 3
 
 
 #Changelog
+
+## 1.5.0
+
+* Big Update
+* Added `twgame` 
+* Added `twcover` (downloads and converts game covers)
+* fixed sort order bug, thanks to tyler and andrew
 
 ## 1.3.0
 

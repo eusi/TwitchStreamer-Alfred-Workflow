@@ -3,8 +3,7 @@
     /**
      * Add all stream data from the Twitch.tv JSON API.
      * 
-     * @param int $limit 
-	 * (maximum number of streams sorted by number of viewers descending)
+     * @param int $limit - maximum number of streams sorted by number of viewers descending
      */
 	function getTwitchStreams( $limit ) {
 		//https://github.com/justintv/Twitch-API/blob/master/v3_resources/streams.md
@@ -60,7 +59,7 @@
     /**
      * Search streams and add channel stream data from the Twitch.tv JSON API.
      * 
-     * @param String $q
+     * @param String $q - stream or game name or a part of it
      * @param int $limit
      */
 	function searchStream( $q, $limit ) {
@@ -90,7 +89,7 @@
     /**
      * Search games and add games data from the Twitch.tv JSON API.
      * 
-     * @param String $q
+     * @param String $q - game name or a part of it
      * @param int $limit
      */
 	function searchGame( $q, $limit ) {
@@ -114,6 +113,10 @@
 		return $games;
 	}
 
+    /**
+     * Search games and return game list.
+     * 
+     */
 	function getTwitchGames() {
 		//https://github.com/justintv/Twitch-API/blob/master/v3_resources/games.md
 		$url = 'https://api.twitch.tv/kraken/games/top?limit=100'; 
@@ -133,7 +136,12 @@
 		}
 		return $games;
 	}
-
+	
+    /**
+     * functions checks if cover already exists
+     * 
+     * @param String $game - game name
+     */
 	function checkCover ( $game ) {
 
 		$game = urlencode( $game );
@@ -150,6 +158,11 @@
 		}
 	}
 
+    /**
+     * functions checks if cover already exists (twcover only)
+     * 
+     * @param String $game - game name
+     */
 	function checkingCovers ( $game ) {
 
 		$game = urlencode( $game );
@@ -160,6 +173,11 @@
 		}
 	}
 
+    /**
+     * functions downloads cover from twitch.tv
+     * 
+     * @param String $game - game name
+     */
 	function downloadCover ( $game ) {
 
 		$ok = false;
@@ -175,6 +193,11 @@
 	 	return $ok;
 	}
 
+    /**
+     * functions checks if url exists
+     * 
+     * @param String $game - game name
+     */
 	function urlExists($file) {
 		$file_headers = @get_headers($file);
 		if($file_headers[0] == 'HTTP/1.1 404 Not Found') {
@@ -185,51 +208,14 @@
 		}
 	}
 
+    /**
+     * functions prepares head data for resizing
+     * 
+     * @param String $game - game name
+     */
 	function resizeImageAndConvertToPNG ( $game ) {
-
 		$filepath_old = "images/". $game .".jpg";
-		//$filepath_new = "images/". $game .".jpg";
 		$filepath_converted = "images/".$game.".png";
-		/*$image_dimension = 200;
-		$scale_mode = -2; //-1 new width, -2 new height, 0 longest side, 1 shortest side
-
-		if (!(file_exists($filepath_old)) || file_exists($filepath_converted)) {
-			return false; 
-		}
-
-		$image_attributes = getimagesize($filepath_old); 
-		$image_width_old = $image_attributes[0]; 
-		$image_height_old = $image_attributes[1]; 
-		$image_filetype = $image_attributes[2]; 
-
-		if ($image_width_old <= 0 || $image_height_old <= 0) return false; 
-			$image_aspectratio = $image_width_old / $image_height_old; 
-
-		if ($scale_mode == 0) { 
-			$scale_mode = ($image_aspectratio > 1 ? -1 : -2); 
-		} elseif ($scale_mode == 1) { 
-			$scale_mode = ($image_aspectratio > 1 ? -2 : -1); 
-		} 
-
-		if ($scale_mode == -1) { 
-			$image_width_new = $image_dimension; 
-			$image_height_new = round($image_dimension / $image_aspectratio); 
-		} elseif ($scale_mode == -2) { 
-			$image_height_new = $image_dimension; 
-			$image_width_new = round($image_dimension * $image_aspectratio); 
-		} else { 
-			return false; 
-		} 
-
-		$image_old = imagecreatefromjpeg($filepath_old); 
-		$image_new = imagecreatetruecolor($image_width_new, $image_height_new); 
-		imagecopyresampled($image_new, $image_old, 0, 0, 0, 0, $image_width_new, $image_height_new, $image_width_old, $image_height_old); 
-		imagejpeg($image_new, $filepath_new); 
-
-		imagedestroy($image_old); 
-		imagedestroy($image_new); 
-
-		imagepng(imagecreatefromjpeg($filepath_new), $filepath_converted);*/
 
 		$dst = imageCanvasResize($filepath_old, 0, 18, 0, 18);
 		imagepng($dst, $filepath_converted);
@@ -237,34 +223,20 @@
 		return true; 
 	 } 
 
-
-
-	/*
-	what?:
-	image_canvas_resize 0.0 (2010-08-22)
-
-	found at:
-	http://php-resource.de/forum/projekthilfe/100115-image-vergroessern-aber-nicht-skalieren.html
-
-
-	note:
-	The image creating functions can cause the script to break
-	if the given dimensions don't fit into PHP's memory limit.
-	That's an issue of the internal PHP memory allocation functions
-	and therefore __can't__ be fixed within a PHP script.
-	*/
-
-	/// copy a bitmap into a bigger bitmap
-	/// return rsrc(image) | FALSE in case of an error
+    /**
+     * functions resizes the game cover and converts it to png
+     * 
+     * @param String $game - game name
+	 *
+	 * image_canvas_resize 0.0 (2010-08-22) found at:	
+	 * http://php-resource.de/forum/projekthilfe/100115-image-vergroessern-aber-nicht-skalieren.html
+     */
 	function imageCanvasResize(
 			$src_img, /// rsrc(image) image resource | str(uri:path) path to an image file
 			$top = 0, /// int(0...) upper padding in pixels
 			$left = 0, /// int(0...) left padding in pixels
 			$bottom = 0, /// int(0...) lower padding in pixels
 			$right = 0 /// int(0...) right padding in pixels
-			//$bg_colour = 0x0 /// int(0...0xffffff) |
-			// str('0x...') background colour as RGB-value
-			// defaults to black
 			) 
 	{
 		if (!is_resource($src_img)) {
@@ -321,32 +293,8 @@
 		}
 
 		// sanitize background colour argument
-		/*
-		$bg_colour = is_numeric($bg_colour)
-		? intval($bg_colour, preg_match('/\A\s0x/', $bg_colour) ? 10 : 16) & 0xffffff
-		: 0x0;
-
-		if (!$true_colour) {
-		imagepalettecopy($dst_img, $src_img);
-		}
-
-		// allocate background colour
-		$r = ($bg_colour >> 16) & 0xff;
-		$g = ($bg_colour >> 8) & 0xff;
-		$b = $bg_colour & 0xff;
-		if (
-		!is_int($bg_colour = imagecolorallocate($dst_img, $r, $g, $b)) ||
-		$bg_colour === -1 // PHP < 5.1.3
-		) {
-		// there is no free entry in the palette
-		// so we choose one which fits best
-		//$bg_colour = imagecolorclosest($dst_img, $r, $g, $b);
-		*/
 		$black = imagecolorallocate($dst_img, 0, 0, 0);
 		$bg_colour = imagecolortransparent($dst_img, $black);
-		//}
-		// note: $bg_colour is now an RGB value for truecolour images
-		// or a palette index number otherwise
 
 		// fill with background colour
 		if (!imagefilledrectangle(
@@ -366,7 +314,6 @@
 			)) {
 			return FALSE;
 		}
-
 		return $dst_img;
 	}
 
