@@ -6,17 +6,6 @@
 	<string>com.eusi.alfred.twitchstreamer</string>
 	<key>connections</key>
 	<dict>
-		<key>063A7CBB-7169-483A-99AD-66892911F870</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>93749124-28BB-4E7E-AD32-8B1CD790BE08</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-			</dict>
-		</array>
 		<key>6F23080D-EAF4-458E-89F7-FA76D83BCDCE</key>
 		<array>
 			<dict>
@@ -39,11 +28,22 @@
 				<string></string>
 			</dict>
 		</array>
-		<key>E701278D-75D5-48E6-862E-DCB5659E1D56</key>
+		<key>C79B81D0-BA17-4A68-BDDF-9F6AC2E7F520</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>30D65DA2-C051-4A58-A336-24538354E4D0</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>CC2E5985-6887-4DEA-98B5-2FE3ECA7B4CC</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>93749124-28BB-4E7E-AD32-8B1CD790BE08</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -260,7 +260,7 @@ echo $w-&gt;toxml();</string>
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>063A7CBB-7169-483A-99AD-66892911F870</string>
+			<string>CC2E5985-6887-4DEA-98B5-2FE3ECA7B4CC</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -336,7 +336,7 @@ echo $w-&gt;toxml();</string>
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>E701278D-75D5-48E6-862E-DCB5659E1D56</string>
+			<string>C79B81D0-BA17-4A68-BDDF-9F6AC2E7F520</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -371,11 +371,6 @@ known bugs or issues:
   This issue occurs cuz of twitch api and hopefully will be fixed.</string>
 	<key>uidata</key>
 	<dict>
-		<key>063A7CBB-7169-483A-99AD-66892911F870</key>
-		<dict>
-			<key>ypos</key>
-			<real>260</real>
-		</dict>
 		<key>30D65DA2-C051-4A58-A336-24538354E4D0</key>
 		<dict>
 			<key>ypos</key>
@@ -401,10 +396,15 @@ known bugs or issues:
 			<key>ypos</key>
 			<real>260</real>
 		</dict>
-		<key>E701278D-75D5-48E6-862E-DCB5659E1D56</key>
+		<key>C79B81D0-BA17-4A68-BDDF-9F6AC2E7F520</key>
 		<dict>
 			<key>ypos</key>
 			<real>380</real>
+		</dict>
+		<key>CC2E5985-6887-4DEA-98B5-2FE3ECA7B4CC</key>
+		<dict>
+			<key>ypos</key>
+			<real>260</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>
