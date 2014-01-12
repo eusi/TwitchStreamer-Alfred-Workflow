@@ -58,7 +58,7 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>TwitchStreamer v1.5</string>
+	<string>TwitchStreamer v1.52</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -233,11 +233,12 @@ $s = searchGame( $q, $limit );
 
 if($s != null) {
 	foreach ($s as $key =&gt; $sele) {
+		//$icon = checkCover( $sele['game'] );
     		$w-&gt;result(	'', 
 					$sele['name'], 
 					$sele['name'], 
 					'Popularity: ' . $sele['popularity'], 
-					'icon.png',
+					'icon.png', //$icon,
 					'yes',
 					$sele['name']
 				  );
