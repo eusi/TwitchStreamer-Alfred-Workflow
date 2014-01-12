@@ -57,7 +57,7 @@ Required: [Livestreamer](https://github.com/chrippa/livestreamer) and [VLC](http
 
 Made in/with OSX 10.9.1, livestreamer 1.7.2, VLC 2.1.2, PHP 5.3, Twitch-API/v3
 
-Supports AlleyOop/Monkey Patch
+Supports AlleyOop/[Monkey Patch](http://www.alfredforum.com/topic/2218-monkey-patch-update-alfred-workflows-via-alleyoop/) (workflow updater).
 
 **[DOWNLOAD HERE](https://github.com/eusi/alfred2-twitch-streamer/blob/master/workflow/TwitchStreamer.alfredworkflow?raw=true)**
 
