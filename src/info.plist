@@ -102,9 +102,9 @@ else {
 
 echo $w-&gt;toxml();</string>
 				<key>subtext</key>
-				<string>List all the TOP live streams.</string>
+				<string>List current TOP live streams on twitch.tv.</string>
 				<key>title</key>
-				<string>Search TOP live streams</string>
+				<string>Show TOP Live Streams</string>
 				<key>type</key>
 				<integer>1</integer>
 				<key>withspace</key>
@@ -148,7 +148,7 @@ echo $w-&gt;toxml();</string>
 require('search.php');
 
 //number of streams sorted by number of viewers descending (max 100)
-$limit = 25; 
+$limit = 30; 
 $q = urlencode( "{query}" );
 
 $w = new Workflows();
@@ -177,7 +177,7 @@ else {
 }
 echo $w-&gt;toxml();</string>
 				<key>subtext</key>
-				<string>Search live streams on twitch.tv.</string>
+				<string>Search live streams on twitch.tv (game or channel).</string>
 				<key>title</key>
 				<string>Search Streams '...'</string>
 				<key>type</key>
@@ -251,7 +251,7 @@ echo $w-&gt;toxml();</string>
 				<key>subtext</key>
 				<string>Search games that are live on twitch.tv.</string>
 				<key>title</key>
-				<string>Search Games '...'</string>
+				<string>Search Games '...' (optional)</string>
 				<key>type</key>
 				<integer>1</integer>
 				<key>withspace</key>
@@ -327,7 +327,7 @@ else {
 
 echo $w-&gt;toxml();</string>
 				<key>title</key>
-				<string>Serach and download game covers</string>
+				<string>Download Game Covers (optional)</string>
 				<key>type</key>
 				<integer>1</integer>
 				<key>withspace</key>
@@ -345,7 +345,7 @@ echo $w-&gt;toxml();</string>
 	<string>keywords and description:
 ————————————————————————————————
 twtop = top50 live streams on twitch.tv (sort by number of viewers)
-tw    = searching for a specific stream (game or streamer)
+tw    = searching for a specific stream (game or streamer/channel)
 
 optional: 
 twgame = searching for games that are live on at least one stream
