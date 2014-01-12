@@ -33,22 +33,24 @@ Optional 2: If you deleted your game cover folder you should use `twcover` to do
 
 
 ## Screenshot 1: Searching TOP
-![Workflow Screenshot](https://github.com/eusi/alfred2-twitch-streamer/blob/master/screenshots/workflow1.jpg?raw=true)
+![Workflow Screenshot](https://raw2.github.com/eusi/alfred2-twitch-streamer/master/screenshots/workflow1.jpg)
 
 ## Screenshot 2: Searching GAME
-![Workflow Screenshot](https://github.com/eusi/alfred2-twitch-streamer/blob/master/screenshots/workflow2.jpg?raw=true)
+![Workflow Screenshot](https://raw2.github.com/eusi/alfred2-twitch-streamer/master/screenshots/workflow2.jpg)
 
 ## Screenshot 3: Searching STREAM
-![Workflow Screenshot](https://github.com/eusi/alfred2-twitch-streamer/blob/master/screenshots/workflow3.jpg?raw=true)
+![Workflow Screenshot](https://raw2.github.com/eusi/alfred2-twitch-streamer/master/screenshots/workflow3.jpg)
 
-## Screenshot 4: Browsing GAMES (leads to Screenshot 2)
-![Workflow Screenshot](https://github.com/eusi/alfred2-twitch-streamer/blob/master/screenshots/workflow4.jpg?raw=true)
+## Screenshot 4: Browsing GAMES
+![Workflow Screenshot](https://raw2.github.com/eusi/alfred2-twitch-streamer/master/screenshots/workflow4.jpg)
+
+(leads to screenshot 2)
 
 ## Screenshot 5: Downloading GAME COVERS
-![Workflow Screenshot](https://github.com/eusi/alfred2-twitch-streamer/blob/master/screenshots/workflow5.png?raw=true)
+![Workflow Screenshot](https://raw2.github.com/eusi/alfred2-twitch-streamer/master/screenshots/workflow5.png)
 
 ## Screenshot 6: Watching STREAM
-![Workflow Screenshot](https://github.com/eusi/alfred2-twitch-streamer/blob/master/screenshots/workflow6.jpg?raw=true)
+![Workflow Screenshot](https://raw2.github.com/eusi/alfred2-twitch-streamer/master/screenshots/workflow6.jpg)
 
 
 ## Download
@@ -59,7 +61,7 @@ Made in/with OSX 10.9.1, livestreamer 1.7.2, VLC 2.1.2, PHP 5.3, Twitch-API/v3
 
 Supports AlleyOop/[Monkey Patch](http://www.alfredforum.com/topic/2218-monkey-patch-update-alfred-workflows-via-alleyoop/) (workflow updater).
 
-**[DOWNLOAD HERE](https://github.com/eusi/alfred2-twitch-streamer/blob/master/workflow/TwitchStreamer.alfredworkflow?raw=true)**
+**[DOWNLOAD HERE](https://raw2.github.com/eusi/alfred2-twitch-streamer/master/workflow/TwitchStreamer.alfredworkflow)**
 
 
 ## Issues
