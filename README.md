@@ -82,12 +82,13 @@ GNU General Public License version 3
 
 #Changelog
 
-## 1.5.0
+## 1.5.0 - 1.5.2
 
 * Big Update
 * Added `twgame` 
 * Added `twcover` (downloads and converts game covers)
 * fixed sort order bug, thanks to tyler and andrew
+* Already added some covers
 
 ## 1.3.0
 
