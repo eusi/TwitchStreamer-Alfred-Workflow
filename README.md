@@ -100,7 +100,7 @@ GNU General Public License version 3
 ## 1.1.0
 
 * First real release without webserver.
-* Added AlleyOop/Monkey Patch support.
+* Added AlleyOop/[Monkey Patch](http://www.alfredforum.com/topic/2218-monkey-patch-update-alfred-workflows-via-alleyoop/) support (workflow updater).
 * Downgraded Workflows from 0.32 to 0.3 due to a sort-bug
 
 
