@@ -4,9 +4,9 @@ TwitchStreamer Workflow for [Alfred 2](http://www.alfredapp.com)
 ## In Short
 * keywords: `tw`, `twtop`, `twgame`, `twcover`
 
-* `twtop`: shows top (online) streamer on twitch.tv with some informations
+* `twtop`: shows top live streams on twitch.tv with some informations
 
-* `tw`: shows specific (online) streamer on twitch.tv with some informations
+* `tw`: search specific live stream on twitch.tv with some informations (argument: game or streamer)
 
 * `twgame`: search games, result leads to `tw ` (optional)
 
@@ -32,7 +32,7 @@ Optional: If you have no idea which game you want to watch or you want to search
 Optional 2: If you deleted your game cover folder you should use `twcover` to download all the top game covers. Otherwise `tw ` or `twtop` will do it, but it takes more time and downloads less covers. 
 
 
-## Screenshot 1: Searching TOP
+## Screenshot 1: Searching TOP STREAMS
 ![Workflow Screenshot](https://raw2.github.com/eusi/alfred2-twitch-streamer/master/screenshots/workflow1.jpg)
 
 ## Screenshot 2: Searching GAME
