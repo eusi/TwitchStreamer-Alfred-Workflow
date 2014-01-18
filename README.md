@@ -2,6 +2,8 @@ TwitchStreamer Workflow for [Alfred 2](http://www.alfredapp.com)
 ==============================
 
 ## In Short
+* Search Twitch.TV streams and watch in [VLC](http://www.videolan.org/vlc/index.html) ([Livestreamer](https://github.com/chrippa/livestreamer) required)
+
 * keywords: `tw`, `twtop`, `twgame`, `twcover`
 
 * `twtop`: shows top live streams on twitch.tv with some informations
@@ -12,8 +14,6 @@ TwitchStreamer Workflow for [Alfred 2](http://www.alfredapp.com)
 
 * `twcover`: download and convert game covers (optional, you only have to use it once you want to download many new game covers)
 
-* opens the selected stream in VLC (Livestreamer required)
-
 * example: `tw star` finds streamer like "starman" and "starcraft" streams
 
 
@@ -23,7 +23,7 @@ Check who is streaming on Twitch.Tv (category gaming) and watch your favorite st
 
 The main keyword is `tw` and the second word is the game or stream you want to watch (examples: `tw voyboy` or `tw league of legends` or also simply `tw league`). Alternative: Use keyword `twtop` to see the current TOP streams. Limit of streams is changable, 50 by default.
 
-With `enter` you can open the stream via Terminal (Livestreamer) on VLC. The Terminal has to be open (in background) while you watch the stream. If you close the Terminal the stream will be shutting down.
+With `enter` you can open the stream via Terminal ([Livestreamer](https://github.com/chrippa/livestreamer)) on [VLC](http://www.videolan.org/vlc/index.html). The Terminal has to be open (in background) while you watch the stream. If you close the Terminal the stream will be shutting down.
 
 The streamer list is sorted by number of viewers descending. The quality of the stream is "high". If you want to change it to best (e.g.), feel free to open the existing "Terminal Command" (alfred, workflow-window) and modify the Livestreamer line.
 
@@ -44,7 +44,7 @@ Optional 2: If you deleted your game cover folder you should use `twcover` to do
 ## Screenshot 4: Browsing GAMES
 ![Workflow Screenshot](https://raw2.github.com/eusi/alfred2-twitch-streamer/master/screenshots/workflow4.jpg)
 
-(leads to screenshot 2)
+(enter "Warframe" leads to screenshot 2: `tw Warframe`)
 
 ## Screenshot 5: Downloading GAME COVERS
 ![Workflow Screenshot](https://raw2.github.com/eusi/alfred2-twitch-streamer/master/screenshots/workflow5.png)
@@ -57,7 +57,7 @@ Optional 2: If you deleted your game cover folder you should use `twcover` to do
 
 Required: [Livestreamer](https://github.com/chrippa/livestreamer) and [VLC](http://www.videolan.org/vlc/index.html)
 
-Made in/with OSX 10.9.1, livestreamer 1.7.2, VLC 2.1.2, PHP 5.3, Twitch-API/v3
+Made in/with OSX 10.9.1, livestreamer 1.7.2, VLC 2.1.2, PHP 5.3, AppleScript 2.3, Twitch-API/v3
 
 Supports AlleyOop/[Monkey Patch](http://www.alfredforum.com/topic/2218-monkey-patch-update-alfred-workflows-via-alleyoop/) (workflow updater).
 
