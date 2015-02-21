@@ -33,24 +33,24 @@ Optional 2: If you deleted your game covers/posters folder you should use `twcov
 
 
 ## Screenshot 1: Searching TOP STREAMS
-![Workflow Screenshot](https://raw2.github.com/eusi/alfred2-twitch-streamer/master/screenshots/workflow1.jpg)
+![Workflow Screenshot](https://raw.githubusercontent.com/eusi/alfred2-twitch-streamer/master/screenshots/workflow1.jpg)
 
 ## Screenshot 2: Searching GAME
-![Workflow Screenshot](https://raw2.github.com/eusi/alfred2-twitch-streamer/master/screenshots/workflow2.jpg)
+![Workflow Screenshot](https://raw.githubusercontent.com/eusi/alfred2-twitch-streamer/master/screenshots/workflow2.jpg)
 
 ## Screenshot 3: Searching STREAM
-![Workflow Screenshot](https://raw2.github.com/eusi/alfred2-twitch-streamer/master/screenshots/workflow3.jpg)
+![Workflow Screenshot](https://raw.githubusercontent.com/eusi/alfred2-twitch-streamer/master/screenshots/workflow3.jpg)
 
 ## Screenshot 4: Browsing GAMES
-![Workflow Screenshot](https://raw2.github.com/eusi/alfred2-twitch-streamer/master/screenshots/workflow4.jpg)
+![Workflow Screenshot](https://raw.githubusercontent.com/eusi/alfred2-twitch-streamer/master/screenshots/workflow4.jpg)
 
 (enter "Warframe" leads to screenshot 2: `tw Warframe`)
 
 ## Screenshot 5: Downloading GAME COVERS/POSTERS
-![Workflow Screenshot](https://raw2.github.com/eusi/alfred2-twitch-streamer/master/screenshots/workflow5.png)
+![Workflow Screenshot](https://raw.githubusercontent.com/eusi/alfred2-twitch-streamer/master/screenshots/workflow5.png)
 
 ## Screenshot 6: Watching STREAM
-![Workflow Screenshot](https://raw2.github.com/eusi/alfred2-twitch-streamer/master/screenshots/workflow6.jpg)
+![Workflow Screenshot](https://raw.githubusercontent.com/eusi/alfred2-twitch-streamer/master/screenshots/workflow6.jpg)
 
 
 ## Download
