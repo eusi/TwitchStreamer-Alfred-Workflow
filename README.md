@@ -57,7 +57,7 @@ Optional 2: If you deleted your game covers/posters folder you should use `twcov
 
 Required: [Livestreamer](https://github.com/chrippa/livestreamer) and [VLC](http://www.videolan.org/vlc/index.html)
 
-Made in/with OSX 10.9.1, livestreamer 1.7.2, VLC 2.1.2, PHP 5.3, AppleScript 2.3, Twitch-API/v3
+Made in/with OSX 10.9.1, livestreamer 1.11.1, VLC 2.1.2, PHP 5.3, AppleScript 2.3, Twitch-API/v3
 
 Supports AlleyOop/[Monkey Patch](http://www.alfredforum.com/topic/2218-monkey-patch-update-alfred-workflows-via-alleyoop/) (workflow updater).
 
@@ -83,6 +83,11 @@ GNU General Public License version 3
 
 
 #Changelog
+
+## 1.6.0
+
+* switched cover-format from png to jpg (due to issue#1)
+* cleaned up code
 
 ## 1.5.0 - 1.5.2
 
