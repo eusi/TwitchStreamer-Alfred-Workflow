@@ -84,32 +84,36 @@ GNU General Public License version 3
 
 #Changelog
 
+## 1.6.1
+
+* Modified terminal command: Terminal must no longer stay open.
+* Added some covers.
+* Fixed updater (json).
+
 ## 1.6.0
 
-* switched cover-format from png to jpg (due to issue#1)
-* cleaned up code
+* Switched cover-format from png to jpg (due to issue#1)
+* Cleaned up code
 
 ## 1.5.0 - 1.5.2
 
 * Big Update
-* Added `twgame` 
-* Added `twcover` (downloads and converts game covers)
-* fixed sort order bug, thanks to tyler and andrew
-* Already added some covers
+* Added `twgame`.
+* Added `twcover` (downloads and converts game covers).
+* Fixed sort order bug, thanks to tyler and andrew.
+* Added some covers.
 
 ## 1.3.0
 
-* Big Update (reworked the whole code)
-* Added `twtop`
-* `tw` searches more efficient and games as well as streams
-
+* Big Update (reworked the whole code).
+* Added `twtop`.
+* `tw` searches more efficient and games as well as streams.
 
 ## 1.1.0
 
 * First real release without webserver.
 * Added AlleyOop/[Monkey Patch](http://www.alfredforum.com/topic/2218-monkey-patch-update-alfred-workflows-via-alleyoop/) support (workflow updater).
-* Downgraded Workflows from 0.32 to 0.3 due to a sort-bug
-
+* Downgraded Workflows from 0.32 to 0.3 due to a sort-bug.
 
 ## 0.5.0
 
