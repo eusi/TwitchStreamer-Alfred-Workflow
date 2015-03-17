@@ -1,4 +1,4 @@
-*__Note:__ There is another version (1.6) of this workflow under branch __vjpg__ (it uses jpg instead of png) cuz some people don't get current version work since they updated OSX to Yosemite. If your version 1.52 still work, you need no update.*
+! *__Note:__ There is another version (1.6) of this workflow under branch __vjpg__ (it uses jpg instead of png) cuz some people don't get current version work since they updated OSX to Yosemite. If your version 1.52 still work, you need no update.*
 
 TwitchStreamer Workflow for [Alfred 2](http://www.alfredapp.com)
 ==============================
