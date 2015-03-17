@@ -123,7 +123,7 @@ echo $w-&gt;toxml();</string>
 				<key>escaping</key>
 				<integer>0</integer>
 				<key>script</key>
-				<string>livestreamer {query} high</string>
+				<string>nohup livestreamer {query} high &</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.terminalcommand</string>
