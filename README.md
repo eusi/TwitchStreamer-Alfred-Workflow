@@ -63,7 +63,7 @@ Made in/with OSX 10.9.1, livestreamer 1.7.2, VLC 2.1.2, PHP 5.3, AppleScript 2.3
 
 Supports AlleyOop/[Monkey Patch](http://www.alfredforum.com/topic/2218-monkey-patch-update-alfred-workflows-via-alleyoop/) (workflow updater).
 
-**[DOWNLOAD HERE](https://raw2.github.com/eusi/alfred2-twitch-streamer/master/workflow/TwitchStreamer.alfredworkflow)**
+**[DOWNLOAD HERE](https://raw.githubusercontent.com/eusi/alfred2-twitch-streamer/master/workflow/TwitchStreamer.alfredworkflow)**
 
 
 ## Issues
