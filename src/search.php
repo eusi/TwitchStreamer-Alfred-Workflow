@@ -29,6 +29,30 @@
 		return $streams;
 	}
 
+    /**
+     * Add all top games data from the Twitch.tv JSON API.
+     * 
+     */
+	function getTopGames( $limit ) {
+		$url = 'https://api.twitch.tv/kraken/games/top?limit=' . $limit; 
+		$json = file_get_contents($url);
+
+		if (!$json) {
+			return false;
+		}
+
+		$data = json_decode($json)->top;
+		$games = array();
+		
+		if($data != null) {
+			foreach ($data as $key => $game) {
+				$games[$key]["viewers"] = $game->viewers;
+				$games[$key]["game"] = $game->game->name;
+				$games[$key]["name"] = $game->game->name;
+			}
+		}
+		return $games;
+	}
 
     /**
      * Search streams and add channel stream data from the Twitch.tv JSON API.
@@ -68,23 +92,26 @@
      */
 	function searchGame( $q, $limit ) {
 		//https://github.com/justintv/Twitch-API/blob/master/v3_resources/search.md
-		$url = 'https://api.twitch.tv/kraken/search/games?q=' . $q . '&type=suggest&live=true&limit=' . $limit; 
+		$url = 'https://api.twitch.tv/kraken/streams?game=' . $q . '&limit=' . $limit . '&live=true'; 
 		$json = file_get_contents($url);
 
 		if (!$json) {
 			return false;
 		}
 
-		$data = json_decode($json)->games;
-		$games = array();
+		$data = json_decode($json)->streams;
+		$streams = array();
 		
 		if($data != null) {
-			foreach ($data as $key => $game) {
-				$games[$key]["game"] = $game->name;
-				$games[$key]["popularity"] = $game->popularity;
+			foreach ($data as $key => $stream) {
+				$streams[$key]["title"] = $stream->channel->status;
+				$streams[$key]["streamer"] = $stream->channel->display_name;
+				$streams[$key]["viewers"] = $stream->viewers;
+				$streams[$key]["game"] = $stream->game;
+				$streams[$key]["url"] = $stream->channel->url;
 			}
 		}
-		return $games;
+		return $streams;
 	}
 
     /**
