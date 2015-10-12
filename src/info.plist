@@ -69,7 +69,7 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>TwitchStreamer v1.7</string>
+	<string>TwitchStreamer v1.71</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -210,8 +210,11 @@ echo $w-&gt;toxml();</string>
 				<key>escaping</key>
 				<integer>0</integer>
 				<key>script</key>
-				<string>nohup livestreamer {query} high &amp;
-exit 0</string>
+				<string>if [ `which livestreamer` ]; then
+  nohup livestreamer {query} high &amp;
+elif [ `which mpv` ]; then
+  nohup mpv {query} &amp;
+fi</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.terminalcommand</string>

@@ -83,6 +83,11 @@ GNU General Public License version 3
 
 #Changelog
 
+## 1.71
+
+* Minor update
+* Added support for mpv playback (thx@ Jonathan Dahan)
+
 ## 1.7
 
 * Changed vjpg-branch to master
@@ -93,7 +98,7 @@ GNU General Public License version 3
 
 ## 1.6.1
 
-* Modified terminal command: Terminal must no longer stay open.
+* Modified terminal command: Terminal must no longer stay open (thx@ mclowe-directnic)
 * Added some covers.
 * Fixed updater (json).
 
