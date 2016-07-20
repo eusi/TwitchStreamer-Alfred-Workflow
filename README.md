@@ -1,4 +1,10 @@
-TwitchStreamer Workflow for [Alfred 2](http://www.alfredapp.com)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GPC2XKCNED664)
+
+
+*Attention: If you are already using* **Alfred 3***, you need to change a string in the "Run NSApple Script" in this workflow: Just change from "Alfred 2" to "Alfred 3".*
+
+
+TwitchStreamer Workflow for [Alfred 2/3](http://www.alfredapp.com)
 ==============================
 
 ## In Short
