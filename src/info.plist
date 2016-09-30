@@ -15,6 +15,8 @@
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+				<key>vitoclose</key>
+				<false/>
 			</dict>
 		</array>
 		<key>6F23080D-EAF4-458E-89F7-FA76D83BCDCE</key>
@@ -26,6 +28,8 @@
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+				<key>vitoclose</key>
+				<false/>
 			</dict>
 		</array>
 		<key>8CF1B7C5-96CE-4B5A-9F95-7462E4753234</key>
@@ -37,6 +41,8 @@
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+				<key>vitoclose</key>
+				<false/>
 			</dict>
 		</array>
 		<key>AC42EC64-23A5-4819-855C-5B744E106CF3</key>
@@ -48,6 +54,8 @@
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+				<key>vitoclose</key>
+				<false/>
 			</dict>
 		</array>
 		<key>C79B81D0-BA17-4A68-BDDF-9F6AC2E7F520</key>
@@ -59,6 +67,8 @@
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+				<key>vitoclose</key>
+				<false/>
 			</dict>
 		</array>
 	</dict>
@@ -69,12 +79,14 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>TwitchStreamer v1.71</string>
+	<string>TwitchStreamer v1.72</string>
 	<key>objects</key>
 	<array>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>escaping</key>
@@ -124,6 +136,10 @@ else {
      'Stream is probably offline or you made a typo.', 'icon.png', 'no' );
 }
 echo $w-&gt;toxml();</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
 				<key>subtext</key>
 				<string>Search live streams on twitch.tv (game or channel).</string>
 				<key>title</key>
@@ -138,11 +154,13 @@ echo $w-&gt;toxml();</string>
 			<key>uid</key>
 			<string>8CF1B7C5-96CE-4B5A-9F95-7462E4753234</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>escaping</key>
@@ -188,6 +206,10 @@ else {
 }
 
 echo $w-&gt;toxml();</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
 				<key>subtext</key>
 				<string>List current TOP live streams on twitch.tv.</string>
 				<key>title</key>
@@ -202,7 +224,7 @@ echo $w-&gt;toxml();</string>
 			<key>uid</key>
 			<string>6F23080D-EAF4-458E-89F7-FA76D83BCDCE</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -221,11 +243,13 @@ fi</string>
 			<key>uid</key>
 			<string>47CB62D4-D704-489C-A306-56CD76A1F208</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>escaping</key>
@@ -275,6 +299,10 @@ else {
      'Stream is probably offline or you made a typo.', 'icon.png', 'no' );
 }
 echo $w-&gt;toxml();</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
 				<key>subtext</key>
 				<string>Search Game on twitch.tv.</string>
 				<key>title</key>
@@ -289,14 +317,32 @@ echo $w-&gt;toxml();</string>
 			<key>uid</key>
 			<string>693753AB-8D7D-49B8-B1AE-EF6FE32AFD92</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
 				<key>applescript</key>
 				<string>on alfred_script(q)
-	tell application "Alfred 2" to search "twbygame " &amp; q
+
+
+-- use Alfred 3 if exists, otherwise Alfred 2
+
+
+set isAlfred3 to false
+try
+    do shell script "osascript -e 'id of app \"Alfred 3\"'"
+    set isAlfred3 to true
+end try
+
+
+if isAlfred3 then
+    tell application "Alfred 3" to search "twbygame " &amp; q
+else 
+    tell application "Alfred 2" to search "twbygame " &amp; q
+end if
+
+
 end alfred_script</string>
 				<key>cachescript</key>
 				<false/>
@@ -306,11 +352,13 @@ end alfred_script</string>
 			<key>uid</key>
 			<string>93749124-28BB-4E7E-AD32-8B1CD790BE08</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>escaping</key>
@@ -357,6 +405,10 @@ else {
 }
 
 echo $w-&gt;toxml();</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
 				<key>subtext</key>
 				<string>List current TOP streamed games on twitch.tv.</string>
 				<key>title</key>
@@ -371,7 +423,7 @@ echo $w-&gt;toxml();</string>
 			<key>uid</key>
 			<string>AC42EC64-23A5-4819-855C-5B744E106CF3</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -380,11 +432,7 @@ echo $w-&gt;toxml();</string>
 				<false/>
 				<key>onlyshowifquerypopulated</key>
 				<false/>
-				<key>output</key>
-				<integer>0</integer>
 				<key>removeextension</key>
-				<false/>
-				<key>sticky</key>
 				<false/>
 				<key>text</key>
 				<string>Downloaded game covers.</string>
@@ -396,11 +444,13 @@ echo $w-&gt;toxml();</string>
 			<key>uid</key>
 			<string>30D65DA2-C051-4A58-A336-24538354E4D0</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>escaping</key>
@@ -443,6 +493,12 @@ else {
 }
 
 echo $w-&gt;toxml();</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
 				<key>title</key>
 				<string>Download Game Icons (optional)</string>
 				<key>type</key>
@@ -455,7 +511,7 @@ echo $w-&gt;toxml();</string>
 			<key>uid</key>
 			<string>C79B81D0-BA17-4A68-BDDF-9F6AC2E7F520</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>2</integer>
 		</dict>
 	</array>
 	<key>readme</key>
@@ -485,41 +541,57 @@ examples:
 	<dict>
 		<key>30D65DA2-C051-4A58-A336-24538354E4D0</key>
 		<dict>
+			<key>xpos</key>
+			<integer>700</integer>
 			<key>ypos</key>
 			<real>450</real>
 		</dict>
 		<key>47CB62D4-D704-489C-A306-56CD76A1F208</key>
 		<dict>
+			<key>xpos</key>
+			<integer>500</integer>
 			<key>ypos</key>
 			<real>130</real>
 		</dict>
 		<key>693753AB-8D7D-49B8-B1AE-EF6FE32AFD92</key>
 		<dict>
+			<key>xpos</key>
+			<integer>300</integer>
 			<key>ypos</key>
 			<real>230</real>
 		</dict>
 		<key>6F23080D-EAF4-458E-89F7-FA76D83BCDCE</key>
 		<dict>
+			<key>xpos</key>
+			<integer>300</integer>
 			<key>ypos</key>
 			<real>120</real>
 		</dict>
 		<key>8CF1B7C5-96CE-4B5A-9F95-7462E4753234</key>
 		<dict>
+			<key>xpos</key>
+			<integer>300</integer>
 			<key>ypos</key>
 			<real>10</real>
 		</dict>
 		<key>93749124-28BB-4E7E-AD32-8B1CD790BE08</key>
 		<dict>
+			<key>xpos</key>
+			<integer>500</integer>
 			<key>ypos</key>
 			<real>340</real>
 		</dict>
 		<key>AC42EC64-23A5-4819-855C-5B744E106CF3</key>
 		<dict>
+			<key>xpos</key>
+			<integer>300</integer>
 			<key>ypos</key>
 			<real>340</real>
 		</dict>
 		<key>C79B81D0-BA17-4A68-BDDF-9F6AC2E7F520</key>
 		<dict>
+			<key>xpos</key>
+			<integer>300</integer>
 			<key>ypos</key>
 			<real>450</real>
 		</dict>

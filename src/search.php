@@ -1,4 +1,6 @@
 <?php
+	//twitch api now requires a specific client id per application/developer
+	$clientId = "&client_id=pq1763hfd37807lw0z8pqum3isqr4hd";
 
     /**
      * Add all stream data from the Twitch.tv JSON API.
@@ -6,8 +8,9 @@
      * @param int $limit - maximum number of streams sorted by number of viewers descending
      */
 	function getTwitchStreams( $limit ) {
+		global $clientId;
 		//https://github.com/justintv/Twitch-API/blob/master/v3_resources/streams.md
-		$url = 'https://api.twitch.tv/kraken/streams?limit=' . $limit; 
+		$url = 'https://api.twitch.tv/kraken/streams?limit=' . $limit . $clientId; 
 		$json = file_get_contents($url);
 
 		if (!$json) {
@@ -34,7 +37,8 @@
      * 
      */
 	function getTopGames( $limit ) {
-		$url = 'https://api.twitch.tv/kraken/games/top?limit=' . $limit; 
+		global $clientId;
+		$url = 'https://api.twitch.tv/kraken/games/top?limit=' . $limit . $clientId; 
 		$json = file_get_contents($url);
 
 		if (!$json) {
@@ -61,8 +65,9 @@
      * @param int $limit
      */
 	function searchStream( $q, $limit ) {
+		global $clientId;
 		//https://github.com/justintv/Twitch-API/blob/master/v3_resources/search.md
-		$url = 'https://api.twitch.tv/kraken/search/streams?q=' . $q . '&limit=' . $limit; 
+		$url = 'https://api.twitch.tv/kraken/search/streams?q=' . $q . '&limit=' . $limit . $clientId; 
 		$json = file_get_contents($url);
 
 		if (!$json) {
@@ -91,8 +96,9 @@
      * @param int $limit
      */
 	function searchGame( $q, $limit ) {
+		global $clientId;
 		//https://github.com/justintv/Twitch-API/blob/master/v3_resources/search.md
-		$url = 'https://api.twitch.tv/kraken/streams?game=' . $q . '&limit=' . $limit . '&live=true'; 
+		$url = 'https://api.twitch.tv/kraken/streams?game=' . $q . '&limit=' . $limit . '&live=true' . $clientId; 
 		$json = file_get_contents($url);
 
 		if (!$json) {
@@ -119,8 +125,9 @@
      * 
      */
 	function getTwitchGames() {
+		global $clientId;
 		//https://github.com/justintv/Twitch-API/blob/master/v3_resources/games.md
-		$url = 'https://api.twitch.tv/kraken/games/top?limit=100'; 
+		$url = 'https://api.twitch.tv/kraken/games/top?limit=100' . $clientId; 
 		$json = file_get_contents($url);
 
 		if (!$json) {
@@ -145,7 +152,7 @@
      */
 	function checkCover ( $game ) {
 
-		$game = urlencode( $game );
+		$game = rawurlencode( $game );
 		$file = 'images/'.$game.'.jpg';
 
 		if( file_exists( $file )) {
@@ -166,7 +173,7 @@
      */
 	function checkingCovers ( $game ) {
 
-		$game = urlencode( $game );
+		$game = rawurlencode( $game );
 		$file = 'images/'.$game.'.jpg';
 
 		if( !file_exists( $file) ) {
