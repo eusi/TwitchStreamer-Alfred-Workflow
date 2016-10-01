@@ -79,7 +79,7 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>TwitchStreamer v1.72</string>
+	<string>TwitchStreamer v1.73</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -233,7 +233,7 @@ echo $w-&gt;toxml();</string>
 				<integer>0</integer>
 				<key>script</key>
 				<string>if [ `which livestreamer` ]; then
-  nohup livestreamer {query} high &amp;
+  nohup livestreamer --http-header Client-ID=pq1763hfd37807lw0z8pqum3isqr4hd {query} high &amp;
 elif [ `which mpv` ]; then
   nohup mpv {query} &amp;
 fi</string>
@@ -517,13 +517,13 @@ echo $w-&gt;toxml();</string>
 	<key>readme</key>
 	<string>keywords and description:
 ————————————————————————————————
-twtop = top live streams on twitch.tv (sort by number of viewers)
-twgames = top streamed games on twitch.tv (sort by number of viewers)
+twtop = top live streams on twitch.tv (sorted by number of viewers)
+twgames = top streamed games on twitch.tv (sorted by number of viewers)
 tw    = search for a specific stream (game or streamer/channel)
 
 optional: 
 twbygame = twgames uses it to search for streamer by specific game
-twcover = search and download game icons/covers (do this, if you deleted your cover folder)
+twcover = search and download game icons/covers (e.g. do this if you deleted your images folder)
 
 
 examples:
@@ -596,6 +596,8 @@ examples:
 			<real>450</real>
 		</dict>
 	</dict>
+	<key>version</key>
+	<string>1.73</string>
 	<key>webaddress</key>
 	<string>https://github.com/eusi/alfred2-twitch-streamer</string>
 </dict>
