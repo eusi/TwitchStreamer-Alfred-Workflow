@@ -86,6 +86,10 @@ GNU General Public License version 3
 
 #Changelog
 
+## 1.73
+
+* Livestreamer has not been updated so far regarding Twitch API changes. => Added a workaround to the workflow without requiring a livestreamer update to make it work.
+
 ## 1.72
 
 * Regarding twitch API changes, added client id to every request
