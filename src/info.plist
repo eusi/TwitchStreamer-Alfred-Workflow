@@ -6,19 +6,6 @@
 	<string>com.eusi.alfred.twitchstreamer</string>
 	<key>connections</key>
 	<dict>
-		<key>693753AB-8D7D-49B8-B1AE-EF6FE32AFD92</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>47CB62D4-D704-489C-A306-56CD76A1F208</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 		<key>6F23080D-EAF4-458E-89F7-FA76D83BCDCE</key>
 		<array>
 			<dict>
@@ -58,6 +45,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>C737FAB2-4E60-4545-8B26-CB85D871B696</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>47CB62D4-D704-489C-A306-56CD76A1F208</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>C79B81D0-BA17-4A68-BDDF-9F6AC2E7F520</key>
 		<array>
 			<dict>
@@ -79,9 +79,79 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>TwitchStreamer v1.73</string>
+	<string>TwitchStreamer v1.74</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>twtop</string>
+				<key>queuedelaycustom</key>
+				<integer>1</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Searching for streams on twitch.tv ...</string>
+				<key>script</key>
+				<string>require('workflows.php');
+require('search.php');
+
+//number of streams sorted by number of viewers descending (max 100)
+$limit = 30; 
+
+$w = new Workflows();
+$s = getTwitchStreams( $limit );
+
+if($s != null) {
+	foreach ($s as $key =&gt; $sele) {
+		$icon = checkCover( $sele['game'] );
+    		$w-&gt;result(	'', 
+					$sele['url'], 
+					$sele['streamer'] . '   -   ' . $sele['title'], 
+					$sele['viewers'] . ' Viewers - ' . $sele['game'], 
+					$icon,
+					'yes' 
+				  );
+	}
+}
+else {
+	 $w-&gt;result( '', '', 'No streams online? This is impossible!', 
+                 'Either you or twitch.tv is offline! Check your ' .
+                 'internet connection first.', 'icon.png', 'no' );
+}
+
+echo $w-&gt;toxml();</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>List current TOP live streams on twitch.tv.</string>
+				<key>title</key>
+				<string>Show TOP Live Streams</string>
+				<key>type</key>
+				<integer>1</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>6F23080D-EAF4-458E-89F7-FA76D83BCDCE</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -153,76 +223,6 @@ echo $w-&gt;toxml();</string>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
 			<string>8CF1B7C5-96CE-4B5A-9F95-7462E4753234</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>escaping</key>
-				<integer>127</integer>
-				<key>keyword</key>
-				<string>twtop</string>
-				<key>queuedelaycustom</key>
-				<integer>1</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<false/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string>Searching for streams on twitch.tv ...</string>
-				<key>script</key>
-				<string>require('workflows.php');
-require('search.php');
-
-//number of streams sorted by number of viewers descending (max 100)
-$limit = 30; 
-
-$w = new Workflows();
-$s = getTwitchStreams( $limit );
-
-if($s != null) {
-	foreach ($s as $key =&gt; $sele) {
-		$icon = checkCover( $sele['game'] );
-    		$w-&gt;result(	'', 
-					$sele['url'], 
-					$sele['streamer'] . '   -   ' . $sele['title'], 
-					$sele['viewers'] . ' Viewers - ' . $sele['game'], 
-					$icon,
-					'yes' 
-				  );
-	}
-}
-else {
-	 $w-&gt;result( '', '', 'No streams online? This is impossible!', 
-                 'Either you or twitch.tv is offline! Check your ' .
-                 'internet connection first.', 'icon.png', 'no' );
-}
-
-echo $w-&gt;toxml();</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string>List current TOP live streams on twitch.tv.</string>
-				<key>title</key>
-				<string>Show TOP Live Streams</string>
-				<key>type</key>
-				<integer>1</integer>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>6F23080D-EAF4-458E-89F7-FA76D83BCDCE</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -315,7 +315,7 @@ echo $w-&gt;toxml();</string>
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>693753AB-8D7D-49B8-B1AE-EF6FE32AFD92</string>
+			<string>C737FAB2-4E60-4545-8B26-CB85D871B696</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -323,7 +323,15 @@ echo $w-&gt;toxml();</string>
 			<key>config</key>
 			<dict>
 				<key>applescript</key>
-				<string>on alfred_script(q)
+				<string>--on alfred_script(q)
+--try
+--do shell script "osascript -e 'id of app \"Alfred 3\"'"
+--tell application "Alfred 3" to search "twbygame " &amp; q
+--end try
+--end alfred_script
+
+
+on alfred_script(q)
 
 
 -- use Alfred 3 if exists, otherwise Alfred 2
@@ -553,26 +561,19 @@ examples:
 			<key>ypos</key>
 			<real>130</real>
 		</dict>
-		<key>693753AB-8D7D-49B8-B1AE-EF6FE32AFD92</key>
-		<dict>
-			<key>xpos</key>
-			<integer>300</integer>
-			<key>ypos</key>
-			<real>230</real>
-		</dict>
 		<key>6F23080D-EAF4-458E-89F7-FA76D83BCDCE</key>
 		<dict>
 			<key>xpos</key>
 			<integer>300</integer>
 			<key>ypos</key>
-			<real>120</real>
+			<integer>10</integer>
 		</dict>
 		<key>8CF1B7C5-96CE-4B5A-9F95-7462E4753234</key>
 		<dict>
 			<key>xpos</key>
 			<integer>300</integer>
 			<key>ypos</key>
-			<real>10</real>
+			<integer>120</integer>
 		</dict>
 		<key>93749124-28BB-4E7E-AD32-8B1CD790BE08</key>
 		<dict>
@@ -588,6 +589,13 @@ examples:
 			<key>ypos</key>
 			<real>340</real>
 		</dict>
+		<key>C737FAB2-4E60-4545-8B26-CB85D871B696</key>
+		<dict>
+			<key>xpos</key>
+			<integer>300</integer>
+			<key>ypos</key>
+			<integer>230</integer>
+		</dict>
 		<key>C79B81D0-BA17-4A68-BDDF-9F6AC2E7F520</key>
 		<dict>
 			<key>xpos</key>
@@ -597,7 +605,7 @@ examples:
 		</dict>
 	</dict>
 	<key>version</key>
-	<string>1.73</string>
+	<string>1.74</string>
 	<key>webaddress</key>
 	<string>https://github.com/eusi/alfred2-twitch-streamer</string>
 </dict>

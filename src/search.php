@@ -11,13 +11,13 @@
 		global $clientId;
 		//https://github.com/justintv/Twitch-API/blob/master/v3_resources/streams.md
 		$url = 'https://api.twitch.tv/kraken/streams?limit=' . $limit . $clientId; 
-		$json = file_get_contents($url);
+		$json = url_get_contents($url);
 
 		if (!$json) {
 			return false;
 		}
 
-		$data = json_decode($json)->streams;
+		$data = json_decode($json, false)->streams;
 		$streams = array();
 		
 		if($data != null) {
@@ -29,6 +29,7 @@
 				$streams[$key]["url"] = $stream->channel->url;
 			}
 		}
+
 		return $streams;
 	}
 
@@ -39,7 +40,7 @@
 	function getTopGames( $limit ) {
 		global $clientId;
 		$url = 'https://api.twitch.tv/kraken/games/top?limit=' . $limit . $clientId; 
-		$json = file_get_contents($url);
+		$json = url_get_contents($url);
 
 		if (!$json) {
 			return false;
@@ -68,7 +69,7 @@
 		global $clientId;
 		//https://github.com/justintv/Twitch-API/blob/master/v3_resources/search.md
 		$url = 'https://api.twitch.tv/kraken/search/streams?q=' . $q . '&limit=' . $limit . $clientId; 
-		$json = file_get_contents($url);
+		$json = url_get_contents($url);
 
 		if (!$json) {
 			return false;
@@ -99,7 +100,7 @@
 		global $clientId;
 		//https://github.com/justintv/Twitch-API/blob/master/v3_resources/search.md
 		$url = 'https://api.twitch.tv/kraken/streams?game=' . $q . '&limit=' . $limit . '&live=true' . $clientId; 
-		$json = file_get_contents($url);
+		$json = url_get_contents($url);
 
 		if (!$json) {
 			return false;
@@ -128,7 +129,7 @@
 		global $clientId;
 		//https://github.com/justintv/Twitch-API/blob/master/v3_resources/games.md
 		$url = 'https://api.twitch.tv/kraken/games/top?limit=100' . $clientId; 
-		$json = file_get_contents($url);
+		$json = url_get_contents($url);
 
 		if (!$json) {
 			return false;
@@ -214,5 +215,27 @@
 		    return true;
 		}
 	}
+
+    /**
+     * functions replaces file_get_contents (get content of url)
+     * 
+     * @param String $url
+     */
+	function url_get_contents ($Url) {
+	    if (!function_exists('curl_init')){ 
+	        die('CURL is not installed!');
+	    }
+
+	    $ch = curl_init();
+
+	    curl_setopt($ch, CURLOPT_URL, $Url);
+	    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+	    $output = curl_exec($ch);
+	    
+	    curl_close($ch);
+
+    	return $output;
+    }
 
 ?>
