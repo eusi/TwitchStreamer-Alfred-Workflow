@@ -5,7 +5,7 @@ TwitchStreamer Workflow for [Alfred](http://www.alfredapp.com)
 ==============================
 
 ## In Short
-* Search Twitch.TV streams and watch in [VLC](http://www.videolan.org/vlc/index.html) ([Livestreamer](https://github.com/chrippa/livestreamer) required)
+* Search Twitch.tv streams and watch in [VLC](http://www.videolan.org/vlc/index.html) or [mpv](https://mpv.io/) ([Livestreamer](https://github.com/chrippa/livestreamer) required)
 
 * keywords: `tw`, `twtop`, `twgames`, optional: `twbygame`, `twcover`
 
@@ -26,11 +26,11 @@ TwitchStreamer Workflow for [Alfred](http://www.alfredapp.com)
 
 ## Details
 
-Check who is streaming on Twitch.Tv (category gaming) and watch your favorite stream via [Livestreamer](https://github.com/chrippa/livestreamer) on [VLC](http://www.videolan.org/vlc/index.html) (no lags anymore, thanks to buffering).
+Check who is streaming on Twitch.Tv (category gaming) and watch your favorite stream via [Livestreamer](https://github.com/chrippa/livestreamer) on [VLC](http://www.videolan.org/vlc/index.html) or [mpv](https://mpv.io/) (no lags anymore, thanks to buffering).
 
 The main keyword is `tw` and the second word is the game or stream you want to watch (examples: `tw voyboy` or `tw league of legends` or also simply `tw league`). Alternative: Use keyword `twtop` to see the current TOP streams or `twgames` for the current TOP streamed games. Limit of streams is changable via specific workflow ($limit-variable).
 
-With `enter` you can open the stream via Terminal ([Livestreamer](https://github.com/chrippa/livestreamer)) on [VLC](http://www.videolan.org/vlc/index.html). The Terminal has not to be open while you are watching the stream. But because of Terminal's nature you need to change its settings first, to force the Terminal to shutdown automatically: Just open Terminal and go to Terminal > Preferences > Profiles or Settings > Shell: > When the shell exits: -> Close if the shell exited cleanly.
+With `enter` you can open the stream via [Livestreamer](https://github.com/chrippa/livestreamer) on [VLC](http://www.videolan.org/vlc/index.html) or [mpv](https://mpv.io/). 
 
 The streamer list is sorted by number of viewers descending. The quality of the stream is "high". If you want to change it to best (e.g.), feel free to open the existing "Terminal Command" (alfred, workflow-window) and modify the Livestreamer line.
 
@@ -58,11 +58,11 @@ Optional: If you deleted your game icons/covers/posters folder (because many of 
 
 ## Download
 
-Required: [Livestreamer](https://github.com/chrippa/livestreamer) and [VLC](http://www.videolan.org/vlc/index.html)
+Required: [Livestreamer](https://github.com/chrippa/livestreamer) and [VLC](http://www.videolan.org/vlc/index.html) or [mpv](https://mpv.io/)
 
 Made in/with OSX 10.9.1, livestreamer 1.11.1, VLC 2.1.2, PHP 5.3, AppleScript 2.3, Twitch-API/v3
 
-Supports AlleyOop/[Monkey Patch](http://www.alfredforum.com/topic/2218-monkey-patch-update-alfred-workflows-via-alleyoop/) (workflow updater).
+Supports [`OneUpdater`](https://github.com/vitorgalvao/alfred-workflows/tree/master/OneUpdater)/AlleyOop/[Monkey Patch](http://www.alfredforum.com/topic/2218-monkey-patch-update-alfred-workflows-via-alleyoop/) (workflow updater).
 
 **[DOWNLOAD HERE](https://raw.githubusercontent.com/eusi/alfred2-twitch-streamer/master/workflow/TwitchStreamer.alfredworkflow)**
 
@@ -86,6 +86,10 @@ GNU General Public License version 3
 
 #Changelog
 
+## 1.75
+
+* Added [`OneUpdater`](https://github.com/vitorgalvao/alfred-workflows/tree/master/OneUpdater) ([forum post](http://www.alfredforum.com/topic/9224-oneupdater-—-update-workflows-with-a-single-node/)) that allows you to update the workflow out of the box (it checks for updates automatically every 15 days and downloads/opens new versions). Changed the usage of Terminal to Run Script (no opened terminal any longer during watching stream). Thx@ vitorgalvao.
+
 ## 1.74
 
 * Replaced file_get_contents() by an own created url_get_contents() that is using curl. It seems file_get_contents(): https:// wrapper is disabled in the server configuration by allow_url_fopen=0 on the new macOS Sierra.
@@ -96,37 +100,37 @@ GNU General Public License version 3
 
 ## 1.72
 
-* Regarding twitch API changes, added client id to every request
-* Regarding twitch API changes, changed string encoding of images 
-* Hence all game covers are renamed or replaced
+* Regarding twitch API changes, added client id to every request.
+* Regarding twitch API changes, changed string encoding of images.
+* Hence all game covers are renamed or replaced.
 
 ## 1.71
 
-* Minor update
+* Minor update.
 * Added support for mpv playback (thx@ Jonathan Dahan)
 
 ## 1.7
 
-* Changed vjpg-branch to master
-* Modified terminal command: Quits Terminal automatically 
-* Deleted `twgame`
-* Added `twgames` (top streamed games by viewers)
-* Added `twbygame`, similar to the old `twgame`
+* Changed vjpg-branch to master.
+* Modified terminal command: Quits Terminal automatically.
+* Deleted `twgame`.
+* Added `twgames` (top streamed games by viewers).
+* Added `twbygame`, similar to the old `twgame`.
 
 ## 1.6.1
 
-* Modified terminal command: Terminal must no longer stay open (thx@ mclowe-directnic)
+* Modified terminal command: Terminal must no longer stay open (thx@ mclowe-directnic).
 * Added some covers.
 * Fixed updater (json).
 
 ## 1.6.0
 
-* Switched cover-format from png to jpg (due to issue#1)
-* Cleaned up code
+* Switched cover-format from png to jpg (due to issue#1).
+* Cleaned up code.
 
 ## 1.5.0 - 1.5.2
 
-* Big Update
+* Big Update.
 * Added `twgame`.
 * Added `twcover` (downloads and converts game covers).
 * Fixed sort order bug, thanks to tyler and andrew.

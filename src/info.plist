@@ -101,7 +101,7 @@
 	<key>createdby</key>
 	<string>Christoph Friegel</string>
 	<key>description</key>
-	<string>Check who is Streaming on twitch.tv and watch your favorite Stream via LiveStreamer on VLC or mpv.</string>
+	<string>Check who is streaming on Twitch.tv and watch your favorite stream via Livestreamer on VLC or mpv.</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
@@ -181,6 +181,35 @@ echo $w-&gt;toxml();</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>PATH="/usr/local/bin:$PATH"
+
+if [ `which livestreamer` ]; then
+  livestreamer --http-header Client-ID=pq1763hfd37807lw0z8pqum3isqr4hd {query} high
+elif [ `which mpv` ]; then
+  mpv {query}
+fi</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>A075C7E9-F64E-4E23-BC19-EF2E6F05A60C</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>argumenttype</key>
@@ -249,35 +278,6 @@ echo $w-&gt;toxml();</string>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
 			<string>8CF1B7C5-96CE-4B5A-9F95-7462E4753234</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>0</integer>
-				<key>script</key>
-				<string>PATH="/usr/local/bin:$PATH"
-
-if [ `which livestreamer` ]; then
-  livestreamer --http-header Client-ID=pq1763hfd37807lw0z8pqum3isqr4hd {query} high
-elif [ `which mpv` ]; then
-  mpv {query}
-fi</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>A075C7E9-F64E-4E23-BC19-EF2E6F05A60C</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -667,9 +667,9 @@ examples:
 		<key>30D65DA2-C051-4A58-A336-24538354E4D0</key>
 		<dict>
 			<key>xpos</key>
-			<integer>700</integer>
+			<integer>520</integer>
 			<key>ypos</key>
-			<real>450</real>
+			<integer>460</integer>
 		</dict>
 		<key>40154537-D021-4D43-8D17-2B337F275F99</key>
 		<dict>
@@ -678,58 +678,58 @@ examples:
 			<key>note</key>
 			<string>OneUpdater</string>
 			<key>xpos</key>
-			<integer>700</integer>
+			<integer>520</integer>
 			<key>ypos</key>
-			<integer>230</integer>
+			<integer>240</integer>
 		</dict>
 		<key>6F23080D-EAF4-458E-89F7-FA76D83BCDCE</key>
 		<dict>
 			<key>xpos</key>
-			<integer>300</integer>
+			<integer>120</integer>
 			<key>ypos</key>
-			<integer>10</integer>
+			<integer>20</integer>
 		</dict>
 		<key>8CF1B7C5-96CE-4B5A-9F95-7462E4753234</key>
 		<dict>
 			<key>xpos</key>
-			<integer>300</integer>
-			<key>ypos</key>
 			<integer>120</integer>
+			<key>ypos</key>
+			<integer>130</integer>
 		</dict>
 		<key>93749124-28BB-4E7E-AD32-8B1CD790BE08</key>
 		<dict>
 			<key>xpos</key>
-			<integer>500</integer>
+			<integer>320</integer>
 			<key>ypos</key>
-			<real>340</real>
+			<integer>350</integer>
 		</dict>
 		<key>A075C7E9-F64E-4E23-BC19-EF2E6F05A60C</key>
 		<dict>
 			<key>xpos</key>
-			<integer>500</integer>
+			<integer>320</integer>
 			<key>ypos</key>
-			<integer>120</integer>
+			<integer>130</integer>
 		</dict>
 		<key>AC42EC64-23A5-4819-855C-5B744E106CF3</key>
 		<dict>
 			<key>xpos</key>
-			<integer>300</integer>
+			<integer>120</integer>
 			<key>ypos</key>
-			<real>340</real>
+			<integer>350</integer>
 		</dict>
 		<key>C79B81D0-BA17-4A68-BDDF-9F6AC2E7F520</key>
 		<dict>
 			<key>xpos</key>
-			<integer>300</integer>
+			<integer>120</integer>
 			<key>ypos</key>
-			<real>450</real>
+			<integer>460</integer>
 		</dict>
 		<key>E05C407A-31AA-4544-8084-145C4A9E3B81</key>
 		<dict>
 			<key>xpos</key>
-			<integer>300</integer>
+			<integer>120</integer>
 			<key>ypos</key>
-			<integer>230</integer>
+			<integer>240</integer>
 		</dict>
 	</dict>
 	<key>version</key>
