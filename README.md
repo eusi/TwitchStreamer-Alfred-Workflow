@@ -4,7 +4,7 @@
 TwitchStreamer Workflow for [Alfred](http://www.alfredapp.com)
 ==============================
 
-## In Short
+## Summary
 * Search Twitch.tv streams and watch in [VLC](http://www.videolan.org/vlc/index.html) or [mpv](https://mpv.io/) ([Livestreamer](https://github.com/chrippa/livestreamer) required)
 
 * keywords: `tw`, `twtop`, `twgames`, optional: `twbygame`, `twcover`
@@ -85,6 +85,10 @@ GNU General Public License version 3
 
 
 #Changelog
+
+## 1.8
+
+* Updated OneUpdater (thx@ vitorgalvao), replaced NSAppleScript by a normal RunScript(JS) that handles the latest installed Alfred (no matter if we switch to Alfred 4..5..6 in future), fixed connection issues by changing file_put_contents to curl and extending url_get_contents().
 
 ## 1.75
 

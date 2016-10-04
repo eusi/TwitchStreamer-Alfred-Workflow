@@ -105,7 +105,7 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>TwitchStreamer v1.75</string>
+	<string>TwitchStreamer v1.8</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -344,9 +344,9 @@ if [[ $(find "${local_file}" -mtime +"${frequency_check}") ]]; then
         abort "'workflow_url' ("${workflow_url}") appears to not be reachable."
       fi # url_exists
     fi # workflow_type
+  else
+    touch "${local_file}" # Reset timer by touching local file
   fi # diff
-else
-  touch "${local_file}" # Reset timer by touching local file
 fi #find</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
@@ -439,45 +439,33 @@ echo $w-&gt;toxml();</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>applescript</key>
-				<string>--on alfred_script(q)
---try
---do shell script "osascript -e 'id of app \"Alfred 3\"'"
---tell application "Alfred 3" to search "twbygame " &amp; q
---end try
---end alfred_script
-
-
-on alfred_script(q)
-
-
--- use Alfred 3 if exists, otherwise Alfred 2
-
-
-set isAlfred3 to false
-try
-    do shell script "osascript -e 'id of app \"Alfred 3\"'"
-    set isAlfred3 to true
-end try
-
-
-if isAlfred3 then
-    tell application "Alfred 3" to search "twbygame " &amp; q
-else 
-    tell application "Alfred 2" to search "twbygame " &amp; q
-end if
-
-
-end alfred_script</string>
-				<key>cachescript</key>
+				<key>concurrently</key>
 				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>ObjC.import('stdlib');
+
+function run(argv) 
+{
+    // Get major version number
+    var v = $.getenv('alfred_version').split('.')[0];
+
+    Application('Alfred ' + v).search('twbygame ' + argv[0]);
+}</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>7</integer>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.applescript</string>
+			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>93749124-28BB-4E7E-AD32-8B1CD790BE08</string>
 			<key>version</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -733,7 +721,7 @@ examples:
 		</dict>
 	</dict>
 	<key>version</key>
-	<string>1.75</string>
+	<string>1.8</string>
 	<key>webaddress</key>
 	<string>https://github.com/eusi/alfred2-twitch-streamer</string>
 </dict>
