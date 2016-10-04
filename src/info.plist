@@ -105,7 +105,7 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>TwitchStreamer v1.75</string>
+	<string>TwitchStreamer v1.76</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -344,9 +344,9 @@ if [[ $(find "${local_file}" -mtime +"${frequency_check}") ]]; then
         abort "'workflow_url' ("${workflow_url}") appears to not be reachable."
       fi # url_exists
     fi # workflow_type
+  else
+    touch "${local_file}" # Reset timer by touching local file
   fi # diff
-else
-  touch "${local_file}" # Reset timer by touching local file
 fi #find</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
@@ -733,7 +733,7 @@ examples:
 		</dict>
 	</dict>
 	<key>version</key>
-	<string>1.75</string>
+	<string>1.76</string>
 	<key>webaddress</key>
 	<string>https://github.com/eusi/alfred2-twitch-streamer</string>
 </dict>
