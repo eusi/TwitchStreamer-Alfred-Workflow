@@ -1,5 +1,5 @@
 {
-	"version": 1.8,
-	"download_url": "https://raw.githubusercontent.com/eusi/alfred2-twitch-streamer/master/workflow/TwitchStreamer.alfredworkflow",
+	"version": 1.81,
+	"download_url": "https://raw.githubusercontent.com/eusi/TwitchStreamer-Alfred-Workflow/master/workflow/TwitchStreamer.alfredworkflow",
 	"description": "TwitchStreamer"
 }

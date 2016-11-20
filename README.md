@@ -86,6 +86,10 @@ GNU General Public License version 3
 
 #Changelog
 
+## 1.81
+
+* Updated jdfwarriors workflows.php for Alfred 3 support (fixed warnings), updated github project link to a generic one.
+
 ## 1.8
 
 * Updated OneUpdater (thx@ vitorgalvao), replaced NSAppleScript by a normal RunScript(JS) that handles the latest installed Alfred (no matter if we switch to Alfred 4..5..6 in future), fixed connection issues by changing file_put_contents to curl and extending url_get_contents().

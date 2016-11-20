@@ -105,7 +105,7 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>TwitchStreamer v1.8</string>
+	<string>TwitchStreamer v1.81</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -290,8 +290,8 @@ echo $w-&gt;toxml();</string>
 				<integer>0</integer>
 				<key>script</key>
 				<string>readonly local_file='info.plist' # Local file to compare to remote_file
-readonly remote_file='https://raw.githubusercontent.com/eusi/alfred2-twitch-streamer/master/src/info.plist' # Remote file (URL) to compare to local_file
-readonly workflow_url='https://raw.githubusercontent.com/eusi/alfred2-twitch-streamer/master/workflow/TwitchStreamer.alfredworkflow' # URL to directly download workflow or workflow download page
+readonly remote_file='https://raw.githubusercontent.com/eusi/TwitchStreamer-Alfred-Workflow/master/src/info.plist' # Remote file (URL) to compare to local_file
+readonly workflow_url='https://raw.githubusercontent.com/eusi/TwitchStreamer-Alfred-Workflow/master/workflow/TwitchStreamer.alfredworkflow' # URL to directly download workflow or workflow download page
 readonly workflow_type='workflow' # Either 'workflow' if workflow_url points to direct download, or 'page' if it points to download page
 readonly frequency_check='15' # Days between update checks
 
@@ -721,8 +721,8 @@ examples:
 		</dict>
 	</dict>
 	<key>version</key>
-	<string>1.8</string>
+	<string>1.81</string>
 	<key>webaddress</key>
-	<string>https://github.com/eusi/alfred2-twitch-streamer</string>
+	<string>https://github.com/eusi/TwitchStreamer-Alfred-Workflow</string>
 </dict>
 </plist>
