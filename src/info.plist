@@ -105,7 +105,7 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>TwitchStreamer v1.81</string>
+	<string>TwitchStreamer v1.82</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -113,6 +113,8 @@
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>escaping</key>
@@ -188,8 +190,10 @@ echo $w-&gt;toxml();</string>
 				<key>script</key>
 				<string>PATH="/usr/local/bin:$PATH"
 
+#alternative client-id which is used by twitch's web player: jzkbprff40iqj646a697cyrvl0zt2m6
+
 if [ `which livestreamer` ]; then
-  livestreamer --http-header Client-ID=pq1763hfd37807lw0z8pqum3isqr4hd {query} high
+  livestreamer --http-header Client-ID=pq1763hfd37807lw0z8pqum3isqr4hd {query} Best
 elif [ `which mpv` ]; then
   mpv {query}
 fi</string>
@@ -212,6 +216,8 @@ fi</string>
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>escaping</key>
@@ -367,6 +373,8 @@ fi #find</string>
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>escaping</key>
@@ -472,6 +480,8 @@ function run(argv)
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>escaping</key>
@@ -564,6 +574,8 @@ echo $w-&gt;toxml();</string>
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>escaping</key>
@@ -721,7 +733,7 @@ examples:
 		</dict>
 	</dict>
 	<key>version</key>
-	<string>1.81</string>
+	<string>1.82</string>
 	<key>webaddress</key>
 	<string>https://github.com/eusi/TwitchStreamer-Alfred-Workflow</string>
 </dict>

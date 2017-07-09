@@ -38,33 +38,33 @@ Optional: If you deleted your game icons/covers/posters folder (because many of 
 
 
 ## Screenshot: Browsing TOP STREAMS
-![Workflow Screenshot](https://raw.githubusercontent.com/eusi/alfred2-twitch-streamer/master/screenshots/workflow1.jpg)
+![Workflow Screenshot](https://raw.githubusercontent.com/eusi/TwitchStreamer-Alfred-Workflow/master/screenshots/workflow1.jpg)
 
 ## Screenshot: Browsing TOP GAMES
-![Workflow Screenshot](https://raw.githubusercontent.com/eusi/alfred2-twitch-streamer/master/screenshots/workflow4.jpg)
+![Workflow Screenshot](https://raw.githubusercontent.com/eusi/TwitchStreamer-Alfred-Workflow/master/screenshots/workflow4.jpg)
 
 ## Screenshot: Searching STREAM
-![Workflow Screenshot](https://raw.githubusercontent.com/eusi/alfred2-twitch-streamer/master/screenshots/workflow3.jpg)
+![Workflow Screenshot](https://raw.githubusercontent.com/eusi/TwitchStreamer-Alfred-Workflow/master/screenshots/workflow3.jpg)
 
 ## Screenshot: Searching GAME
-![Workflow Screenshot](https://raw.githubusercontent.com/eusi/alfred2-twitch-streamer/master/screenshots/workflow2.jpg)
+![Workflow Screenshot](https://raw.githubusercontent.com/eusi/TwitchStreamer-Alfred-Workflow/master/screenshots/workflow2.jpg)
 
 ## Screenshot: Downloading GAME COVERS/POSTERS
-![Workflow Screenshot](https://raw.githubusercontent.com/eusi/alfred2-twitch-streamer/master/screenshots/workflow5.png)
+![Workflow Screenshot](https://raw.githubusercontent.com/eusi/TwitchStreamer-Alfred-Workflow/master/screenshots/workflow5.png)
 
 ## Screenshot: Watching STREAM
-![Workflow Screenshot](https://raw.githubusercontent.com/eusi/alfred2-twitch-streamer/master/screenshots/workflow6.jpg)
+![Workflow Screenshot](https://raw.githubusercontent.com/eusi/TwitchStreamer-Alfred-Workflow/master/screenshots/workflow6.jpg)
 
 
 ## Download
 
-Required: [Livestreamer](https://github.com/chrippa/livestreamer) and [VLC](http://www.videolan.org/vlc/index.html) or [mpv](https://mpv.io/)
+Required: [Alfred](https://www.alfredapp.com/), [Livestreamer](https://github.com/chrippa/livestreamer) and [VLC](http://www.videolan.org/vlc/index.html) or [mpv](https://mpv.io/)
 
 Made in/with OSX 10.9.1, livestreamer 1.11.1, VLC 2.1.2, PHP 5.3, AppleScript 2.3, Twitch-API/v3
 
 Supports [`OneUpdater`](https://github.com/vitorgalvao/alfred-workflows/tree/master/OneUpdater)/AlleyOop/[Monkey Patch](http://www.alfredforum.com/topic/2218-monkey-patch-update-alfred-workflows-via-alleyoop/) (workflow updater).
 
-**[DOWNLOAD HERE](https://raw.githubusercontent.com/eusi/alfred2-twitch-streamer/master/workflow/TwitchStreamer.alfredworkflow)**
+**[DOWNLOAD HERE](https://raw.githubusercontent.com/eusi/TwitchStreamer-Alfred-Workflow/master/workflow/TwitchStreamer.alfredworkflow)**
 
 ## Issues
 
@@ -73,7 +73,7 @@ Supports [`OneUpdater`](https://github.com/vitorgalvao/alfred-workflows/tree/mas
 
 ## Contacts
 
-If you have found bugs/issues or if you just want to say "hello" so send me an email: eusi.cf@gmail.com
+If you have found bugs/issues use the [issues tracker](https://github.com/eusi/TwitchStreamer-Alfred-Workflow/issues) or if you just want to say "hello" in addition so send me an email: eusi.cf@gmail.com
 
 <a href="https://github.com/eusi"><img src="https://2.gravatar.com/avatar/d954b2ec10b10436505ae62fe972df97?d=https%3A%2F%2Fidenticons.github.com%2Fe098fc2b57681a6f25ba17badf99aa6f.png&r=x&s=440" alt="eusi" title="eusi" width="100" height="100"></a>
 
@@ -85,6 +85,11 @@ GNU General Public License version 3
 
 
 #Changelog
+
+## 1.82
+
+* Changed streaming quality to Best (from High), because many streams will not work with High as default quality.
+* Added new game covers.
 
 ## 1.81
 
