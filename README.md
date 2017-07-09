@@ -84,45 +84,45 @@ GNU General Public License version 3
 
 
 
-#Changelog
+##Changelog
 
-## 1.82
+### 1.82
 
 * Changed streaming quality to Best (from High), because many streams will not work with High as default quality.
 * Added new game covers.
 
-## 1.81
+### 1.81
 
 * Updated jdfwarriors workflows.php for Alfred 3 support (fixed warnings), updated github project link to a generic one.
 
-## 1.8
+### 1.8
 
 * Updated OneUpdater (thx@ vitorgalvao), replaced NSAppleScript by a normal RunScript(JS) that handles the latest installed Alfred (no matter if we switch to Alfred 4..5..6 in future), fixed connection issues by changing file_put_contents to curl and extending url_get_contents().
 
-## 1.75
+### 1.75
 
 * Added [`OneUpdater`](https://github.com/vitorgalvao/alfred-workflows/tree/master/OneUpdater) ([forum post](http://www.alfredforum.com/topic/9224-oneupdater-—-update-workflows-with-a-single-node/)) that allows you to update the workflow out of the box (it checks for updates automatically every 15 days and downloads/opens new versions). Changed the usage of Terminal to Run Script (no opened terminal any longer during watching stream). Thx@ vitorgalvao.
 
-## 1.74
+### 1.74
 
 * Replaced file_get_contents() by an own created url_get_contents() that is using curl. It seems file_get_contents(): https:// wrapper is disabled in the server configuration by allow_url_fopen=0 on the new macOS Sierra.
 
-## 1.73
+### 1.73
 
 * Livestreamer has not been updated so far regarding Twitch API changes. => Added a workaround to the workflow without requiring a livestreamer update to make it work.
 
-## 1.72
+### 1.72
 
 * Regarding twitch API changes, added client id to every request.
 * Regarding twitch API changes, changed string encoding of images.
 * Hence all game covers are renamed or replaced.
 
-## 1.71
+### 1.71
 
 * Minor update.
 * Added support for mpv playback (thx@ Jonathan Dahan)
 
-## 1.7
+### 1.7
 
 * Changed vjpg-branch to master.
 * Modified terminal command: Quits Terminal automatically.
@@ -130,18 +130,18 @@ GNU General Public License version 3
 * Added `twgames` (top streamed games by viewers).
 * Added `twbygame`, similar to the old `twgame`.
 
-## 1.6.1
+### 1.6.1
 
 * Modified terminal command: Terminal must no longer stay open (thx@ mclowe-directnic).
 * Added some covers.
 * Fixed updater (json).
 
-## 1.6.0
+### 1.6.0
 
 * Switched cover-format from png to jpg (due to issue#1).
 * Cleaned up code.
 
-## 1.5.0 - 1.5.2
+### 1.5.0 - 1.5.2
 
 * Big Update.
 * Added `twgame`.
@@ -149,18 +149,18 @@ GNU General Public License version 3
 * Fixed sort order bug, thanks to tyler and andrew.
 * Added some covers.
 
-## 1.3.0
+### 1.3.0
 
 * Big Update (reworked the whole code).
 * Added `twtop`.
 * `tw` searches more efficient and games as well as streams.
 
-## 1.1.0
+### 1.1.0
 
 * First real release without webserver.
 * Added AlleyOop/[Monkey Patch](http://www.alfredforum.com/topic/2218-monkey-patch-update-alfred-workflows-via-alleyoop/) support (workflow updater).
 * Downgraded Workflows from 0.32 to 0.3 due to a sort-bug.
 
-## 0.5.0
+### 0.5.0
 
 * First release with all functions. Based on stream-parsing on webserver.
