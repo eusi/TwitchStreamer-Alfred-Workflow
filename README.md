@@ -5,19 +5,17 @@ TwitchStreamer Workflow for [Alfred](http://www.alfredapp.com)
 ==============================
 
 ## Summary
-* Search Twitch.tv streams and watch in [VLC](http://www.videolan.org/vlc/index.html) or [mpv](https://mpv.io/) ([Livestreamer](https://github.com/chrippa/livestreamer) required)
+* Search Twitch.tv streams and watch via [VLC](http://www.videolan.org/vlc/index.html) or [mpv](https://mpv.io/) or [IINA](https://iina.io) ([Streamlink (former Livestreamer)](https://streamlink.github.io/index.html) required)
 
-* keywords: `tw`, `twtop`, `twgames`, optional: `twbygame`, `twcover`
+* keywords: `tw`, `twtop`, `twgames`, optional: twcover`
 
-* `twtop`: show top live streams on twitch.tv
+* `twtop`: show top live streams (sorted by number of current viewers)
 
-* `twgames`: show top live games streamed on twitch.tv
+* `twgames`: show top live games streamed (sorted by number of current viewers)
 
-* `tw`: search specific live stream/game on twitch.tv (argument: game, channel or streamer)
+* `tw`: search specific live channel/game
 
-* `twbygame`: search streams by game, result leads to `tw `
-
-* `twcover`: download game icons/covers/posters (optional, you only have to use it once you want to download many new game covers => e.g. because you deleted your outdated cover-folder)
+* `twcover`: download/preload game icons for better user experience
 
 * browse philosophy: `twtop` or `twgames` for getting the most wanted streams on twitch.tv
 
@@ -26,31 +24,31 @@ TwitchStreamer Workflow for [Alfred](http://www.alfredapp.com)
 
 ## Details
 
-Check who is streaming on Twitch.Tv (category gaming) and watch your favorite stream via [Livestreamer](https://github.com/chrippa/livestreamer) on [VLC](http://www.videolan.org/vlc/index.html) or [mpv](https://mpv.io/) (no lags anymore, thanks to buffering).
+Check who is streaming on Twitch.tv (category gaming) and watch your favorite stream via [Streamlink](https://streamlink.github.io/index.html) on [VLC](http://www.videolan.org/vlc/index.html) or [mpv](https://mpv.io/) or [IINA](https://iina.io) (no lags anymore, thanks to buffering).
 
 The main keyword is `tw` and the second word is the game or stream you want to watch (examples: `tw voyboy` or `tw league of legends` or also simply `tw league`). Alternative: Use keyword `twtop` to see the current TOP streams or `twgames` for the current TOP streamed games. Limit of streams is changable via specific workflow ($limit-variable).
 
-With `enter` you can open the stream via [Livestreamer](https://github.com/chrippa/livestreamer) on [VLC](http://www.videolan.org/vlc/index.html) or [mpv](https://mpv.io/). 
+With `enter` you can open the stream via [Streamlink](https://streamlink.github.io/index.html) on [VLC](http://www.videolan.org/vlc/index.html) or [mpv](https://mpv.io/) or [IINA](https://iina.io). 
 
 The streamer list is sorted by number of viewers descending. The quality of the stream is "high". If you want to change it to best (e.g.), feel free to open the existing "Terminal Command" (alfred, workflow-window) and modify the Livestreamer line.
 
-Optional: If you deleted your game icons/covers/posters folder (because many of them are outdated) you should use `twcover` to download all the top game covers. Otherwise `tw ` or `twtop` will do it, but it takes more time and downloads less covers. 
+Optional: If you deleted your game icons/covers folder (because many of them are outdated) you should use `twcover` to download all the top game covers. Otherwise `tw ` or `twtop` will do it, but it takes more time and downloads less covers at the same time. 
 
+## Screenshot: Entry point
+![Workflow Screenshot](https://raw.githubusercontent.com/eusi/TwitchStreamer-Alfred-Workflow/master/screenshots/workflow0.jpg)
 
 ## Screenshot: Browsing TOP STREAMS
 ![Workflow Screenshot](https://raw.githubusercontent.com/eusi/TwitchStreamer-Alfred-Workflow/master/screenshots/workflow1.jpg)
 
 ## Screenshot: Browsing TOP GAMES
-![Workflow Screenshot](https://raw.githubusercontent.com/eusi/TwitchStreamer-Alfred-Workflow/master/screenshots/workflow4.jpg)
-
-## Screenshot: Searching STREAM
-![Workflow Screenshot](https://raw.githubusercontent.com/eusi/TwitchStreamer-Alfred-Workflow/master/screenshots/workflow3.jpg)
-
-## Screenshot: Searching GAME
 ![Workflow Screenshot](https://raw.githubusercontent.com/eusi/TwitchStreamer-Alfred-Workflow/master/screenshots/workflow2.jpg)
 
+## Screenshot: Searching STREAM (Channel or Game)
+![Workflow Screenshot](https://raw.githubusercontent.com/eusi/TwitchStreamer-Alfred-Workflow/master/screenshots/workflow4.jpg)
+
 ## Screenshot: Downloading GAME COVERS/POSTERS
-![Workflow Screenshot](https://raw.githubusercontent.com/eusi/TwitchStreamer-Alfred-Workflow/master/screenshots/workflow5.png)
+![Workflow Screenshot](https://raw.githubusercontent.com/eusi/TwitchStreamer-Alfred-Workflow/master/screenshots/workflow5.jpg)
+![Workflow Screenshot](https://raw.githubusercontent.com/eusi/TwitchStreamer-Alfred-Workflow/master/screenshots/workflow5-.jpg)
 
 ## Screenshot: Watching STREAM
 ![Workflow Screenshot](https://raw.githubusercontent.com/eusi/TwitchStreamer-Alfred-Workflow/master/screenshots/workflow6.jpg)
@@ -58,9 +56,9 @@ Optional: If you deleted your game icons/covers/posters folder (because many of 
 
 ## Download
 
-Required: [Alfred](https://www.alfredapp.com/), [Livestreamer](https://github.com/chrippa/livestreamer) and [VLC](http://www.videolan.org/vlc/index.html) or [mpv](https://mpv.io/)
+Required: [Alfred](https://www.alfredapp.com/), [Streamlink](https://streamlink.github.io/index.html) and [VLC](http://www.videolan.org/vlc/index.html) or [mpv](https://mpv.io/) or [IINA](https://iina.io). 
 
-Made in/with OSX 10.9.1, livestreamer 1.11.1, VLC 2.1.2, PHP 5.3, AppleScript 2.3, Twitch-API/v3
+Made/Tested in/with OSX 10.15.7, Streamlink 2.4.0, VLC 3.0.16, PHP 7.3.11, AppleScript >2.5, Twitch API (Oct. 2021)
 
 Supports [`OneUpdater`](https://github.com/vitorgalvao/alfred-workflows/tree/master/OneUpdater)/AlleyOop/[Monkey Patch](http://www.alfredforum.com/topic/2218-monkey-patch-update-alfred-workflows-via-alleyoop/) (workflow updater).
 
@@ -68,7 +66,14 @@ Supports [`OneUpdater`](https://github.com/vitorgalvao/alfred-workflows/tree/mas
 
 ## Issues
 
-* it takes a lil time between entries because of the twitch.tv-api
+* it takes a lil time between entries because of the Twitch API
+
+
+## Next
+
+* Adding more information for "twgames": number of cannels and viewer (via get streams and game_-_id/user_id)
+
+* Adding more information for "tw *": viewers (via get streams and broadcaster-id)
 
 
 ## Contacts
@@ -85,6 +90,13 @@ GNU General Public License version 3
 
 
 ## Changelog
+
+### 2.00
+
+* Updated entire Twitch API to latest (incl. new oauth).
+* Changed livestreamer to streamlink.
+* Added VLC, MVP and IINA player support.
+* Updated game covers.
 
 ### 1.82
 

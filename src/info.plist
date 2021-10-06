@@ -84,19 +84,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>E05C407A-31AA-4544-8084-145C4A9E3B81</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>A075C7E9-F64E-4E23-BC19-EF2E6F05A60C</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 	</dict>
 	<key>createdby</key>
 	<string>Christoph Friegel</string>
@@ -105,7 +92,7 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>TwitchStreamer v1.82</string>
+	<string>TwitchStreamer v2.00</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -113,6 +100,8 @@
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -136,8 +125,9 @@
 require('search.php');
 
 //number of streams sorted by number of viewers descending (max 100)
-$limit = 30; 
+$limit = 20; 
 
+init();
 $w = new Workflows();
 $s = getTwitchStreams( $limit );
 
@@ -158,16 +148,15 @@ else {
                  'Either you or twitch.tv is offline! Check your ' .
                  'internet connection first.', 'icon.png', 'no' );
 }
-
 echo $w-&gt;toxml();</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
-				<string>List current TOP live streams on twitch.tv.</string>
+				<string>List TOP live streams on twitch.tv.</string>
 				<key>title</key>
-				<string>Show TOP Live Streams</string>
+				<string>Show TOP Streams</string>
 				<key>type</key>
 				<integer>1</integer>
 				<key>withspace</key>
@@ -190,12 +179,12 @@ echo $w-&gt;toxml();</string>
 				<key>script</key>
 				<string>PATH="/usr/local/bin:$PATH"
 
-#alternative client-id which is used by twitch's web player: jzkbprff40iqj646a697cyrvl0zt2m6
-
-if [ `which livestreamer` ]; then
-  livestreamer --http-header Client-ID=pq1763hfd37807lw0z8pqum3isqr4hd {query} Best
+if [ `which iina` ]; then
+  streamlink -p iina {query} best &amp;
+elif [ `which vlc` ]; then
+  streamlink -p vlc {query} best &amp;
 elif [ `which mpv` ]; then
-  mpv {query}
+  streamlink -p mpv {query} best &amp;
 fi</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
@@ -208,82 +197,6 @@ fi</string>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>A075C7E9-F64E-4E23-BC19-EF2E6F05A60C</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>escaping</key>
-				<integer>126</integer>
-				<key>keyword</key>
-				<string>tw</string>
-				<key>queuedelaycustom</key>
-				<integer>1</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<false/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string>Searching for stream(s) on twitch.tv ...</string>
-				<key>script</key>
-				<string>require('workflows.php');
-require('search.php');
-
-//number of streams sorted by number of viewers descending (max 100)
-$limit = 30; 
-$q = urlencode( "{query}" );
-
-$w = new Workflows();
-$s = searchStream( $q, $limit );
-
-if($s != null) {
-	foreach ($s as $key =&gt; $sele) {
-		$icon = checkCover( $sele['game'] );
-    		$w-&gt;result(	'', 
-					$sele['url'], 
-					$sele['streamer'] . '   -   ' . $sele['title'], 
-					$sele['viewers'] . ' Viewers - ' . $sele['game'], 
-					$icon,
-					'yes' 
-				  );
-	}
-}
-elseif( strlen( $q ) &lt; 3 ) {
-	 $w-&gt;result( '', '', 'Please wait for result or make sure you have ' . 
-              'typed in at least 3 letters.', 
-              'Searching for stream(s) on twitch.tv ...','icon.png','no' );
-}
-else {
-	 $w-&gt;result( '', '', 'No stream or game found! Try another!', 
-     'Stream is probably offline or you made a typo.', 'icon.png', 'no' );
-}
-echo $w-&gt;toxml();</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string>Search live streams on twitch.tv (game or channel).</string>
-				<key>title</key>
-				<string>Search Streams '...'</string>
-				<key>type</key>
-				<integer>1</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>8CF1B7C5-96CE-4B5A-9F95-7462E4753234</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -373,6 +286,8 @@ fi #find</string>
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -380,7 +295,7 @@ fi #find</string>
 				<key>escaping</key>
 				<integer>126</integer>
 				<key>keyword</key>
-				<string>twbygame</string>
+				<string>tw</string>
 				<key>queuedelaycustom</key>
 				<integer>1</integer>
 				<key>queuedelayimmediatelyinitially</key>
@@ -390,17 +305,17 @@ fi #find</string>
 				<key>queuemode</key>
 				<integer>1</integer>
 				<key>runningsubtext</key>
-				<string>Searching for game on twitch.tv ...</string>
+				<string>Searching for stream(s) on twitch.tv ...</string>
 				<key>script</key>
 				<string>require('workflows.php');
 require('search.php');
 
-//number of games sorted by viewers (max 100)
-$limit = 15; 
+//number of streams sorted by number of viewers descending (max 100)
+$limit = 30; 
 $q = urlencode( "{query}" );
 
 $w = new Workflows();
-$s = searchGame($q, $limit);
+$s = searchStream( $q, $limit );
 
 if($s != null) {
 	foreach ($s as $key =&gt; $sele) {
@@ -408,7 +323,7 @@ if($s != null) {
     		$w-&gt;result(	'', 
 					$sele['url'], 
 					$sele['streamer'] . '   -   ' . $sele['title'], 
-					$sele['viewers'] . ' Viewers - ' . $sele['game'], 
+					$sele['game'], 
 					$icon,
 					'yes' 
 				  );
@@ -429,9 +344,9 @@ echo $w-&gt;toxml();</string>
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
-				<string>Search Game on twitch.tv.</string>
+				<string>Search live streams on twitch.tv (game or channel).</string>
 				<key>title</key>
-				<string>Search Game</string>
+				<string>Search for Streams (e.g. tw channel)</string>
 				<key>type</key>
 				<integer>1</integer>
 				<key>withspace</key>
@@ -440,7 +355,7 @@ echo $w-&gt;toxml();</string>
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>E05C407A-31AA-4544-8084-145C4A9E3B81</string>
+			<string>8CF1B7C5-96CE-4B5A-9F95-7462E4753234</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -459,7 +374,7 @@ function run(argv)
     // Get major version number
     var v = $.getenv('alfred_version').split('.')[0];
 
-    Application('Alfred ' + v).search('twbygame ' + argv[0]);
+    Application('Alfred ' + v).search('tw ' + argv[0]);
 }</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
@@ -480,6 +395,8 @@ function run(argv)
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -512,12 +429,12 @@ if($s != null) {
 	foreach ($s as $key =&gt; $sele) {
 		$icon = checkCover( $sele['game'] );
     		$w-&gt;result(	'', 
-					$sele['game'], 
-					$sele['game'], 
-					'Viewers: ' . $sele['viewers'], 
+					$sele['game'],
+	                 $sele['game'],
+					$sele['top'], 
 					$icon, //'icon.png', 
 					'yes',
-					$sele['name']
+                     '1'
 				  );
 	}
 }
@@ -533,9 +450,9 @@ echo $w-&gt;toxml();</string>
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
-				<string>List current TOP streamed games on twitch.tv.</string>
+				<string>List TOP streamed games on twitch.tv.</string>
 				<key>title</key>
-				<string>Show TOP streamed Games</string>
+				<string>Show TOP Games</string>
 				<key>type</key>
 				<integer>1</integer>
 				<key>withspace</key>
@@ -574,6 +491,8 @@ echo $w-&gt;toxml();</string>
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -591,13 +510,17 @@ echo $w-&gt;toxml();</string>
 				<key>queuemode</key>
 				<integer>1</integer>
 				<key>runningsubtext</key>
-				<string>Searching and downloading game icons/covers... Please wait it takes some time (about 1 minute)...</string>
+				<string>Downloading game covers... Please don't close and wait, it takes ~1 min.</string>
 				<key>script</key>
 				<string>require('workflows.php');
 require('search.php');
 
+//specify how many games should be browsed for icons
+//recommended and max: 100
+$limit = 100;
+
 $w = new Workflows();
-$g = getTwitchGames();
+$g = getTwitchGames( $limit );
 
 if($g != null) {
 	$inc = 0;
@@ -623,9 +546,9 @@ echo $w-&gt;toxml();</string>
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
-				<string></string>
+				<string>Preload top-game icons will speed up your regular usage.</string>
 				<key>title</key>
-				<string>Download Game Icons (optional)</string>
+				<string>Download Game Icons</string>
 				<key>type</key>
 				<integer>1</integer>
 				<key>withspace</key>
@@ -642,14 +565,12 @@ echo $w-&gt;toxml();</string>
 	<key>readme</key>
 	<string>keywords and description:
 ————————————————————————————————
-twtop = top live streams on twitch.tv (sorted by number of viewers)
-twgames = top streamed games on twitch.tv (sorted by number of viewers)
-tw    = search for a specific stream (game or streamer/channel)
+twtop   = top live streams on twitch.tv
+twgames = top streamed games on twitch.tv
+tw      = search for a specific stream (game or streamer/channel)
 
 optional: 
-twbygame = twgames uses it to search for streamer by specific game
-twcover = search and download game icons/covers (e.g. do this if you deleted your images folder)
-
+twcover = download game icons - preloading the covers speeds up your user experience
 
 examples:
 ————————————————————————————————
@@ -659,17 +580,15 @@ examples:
  
 ‚twgames‘
 
-‚twbygame League Of Legends‚ (searches for streams of „league of legends“ only)
-
 ‚twcover‘</string>
 	<key>uidata</key>
 	<dict>
 		<key>30D65DA2-C051-4A58-A336-24538354E4D0</key>
 		<dict>
 			<key>xpos</key>
-			<integer>520</integer>
+			<integer>600</integer>
 			<key>ypos</key>
-			<integer>460</integer>
+			<integer>350</integer>
 		</dict>
 		<key>40154537-D021-4D43-8D17-2B337F275F99</key>
 		<dict>
@@ -678,62 +597,55 @@ examples:
 			<key>note</key>
 			<string>OneUpdater</string>
 			<key>xpos</key>
-			<integer>520</integer>
+			<integer>600</integer>
 			<key>ypos</key>
-			<integer>240</integer>
+			<integer>130</integer>
 		</dict>
 		<key>6F23080D-EAF4-458E-89F7-FA76D83BCDCE</key>
 		<dict>
 			<key>xpos</key>
-			<integer>120</integer>
+			<integer>200</integer>
 			<key>ypos</key>
 			<integer>20</integer>
 		</dict>
 		<key>8CF1B7C5-96CE-4B5A-9F95-7462E4753234</key>
 		<dict>
 			<key>xpos</key>
-			<integer>120</integer>
+			<integer>200</integer>
 			<key>ypos</key>
 			<integer>130</integer>
 		</dict>
 		<key>93749124-28BB-4E7E-AD32-8B1CD790BE08</key>
 		<dict>
 			<key>xpos</key>
-			<integer>320</integer>
+			<integer>400</integer>
 			<key>ypos</key>
-			<integer>350</integer>
+			<integer>240</integer>
 		</dict>
 		<key>A075C7E9-F64E-4E23-BC19-EF2E6F05A60C</key>
 		<dict>
 			<key>xpos</key>
-			<integer>320</integer>
+			<integer>400</integer>
 			<key>ypos</key>
-			<integer>130</integer>
+			<integer>20</integer>
 		</dict>
 		<key>AC42EC64-23A5-4819-855C-5B744E106CF3</key>
 		<dict>
 			<key>xpos</key>
-			<integer>120</integer>
+			<integer>200</integer>
 			<key>ypos</key>
-			<integer>350</integer>
+			<integer>240</integer>
 		</dict>
 		<key>C79B81D0-BA17-4A68-BDDF-9F6AC2E7F520</key>
 		<dict>
 			<key>xpos</key>
-			<integer>120</integer>
+			<integer>200</integer>
 			<key>ypos</key>
-			<integer>460</integer>
-		</dict>
-		<key>E05C407A-31AA-4544-8084-145C4A9E3B81</key>
-		<dict>
-			<key>xpos</key>
-			<integer>120</integer>
-			<key>ypos</key>
-			<integer>240</integer>
+			<integer>350</integer>
 		</dict>
 	</dict>
 	<key>version</key>
-	<string>1.82</string>
+	<string>2.00</string>
 	<key>webaddress</key>
 	<string>https://github.com/eusi/TwitchStreamer-Alfred-Workflow</string>
 </dict>
