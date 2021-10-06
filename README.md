@@ -30,7 +30,7 @@ The main keyword is `tw` and the second word is the game or stream you want to w
 
 With `enter` you can open the stream via [Streamlink](https://streamlink.github.io/index.html) on [VLC](http://www.videolan.org/vlc/index.html) or [mpv](https://mpv.io/) or [IINA](https://iina.io). 
 
-The streamer list is sorted by number of viewers descending. The quality of the stream is "high". If you want to change it to best (e.g.), feel free to open the existing "Terminal Command" (alfred, workflow-window) and modify the Livestreamer line.
+The streamer list is sorted by number of viewers descending. The quality of the stream is "high". If you want to change it to best (e.g.), feel free to open the existing "Terminal Command" (alfred, workflow-window) and modify the streamlink line.
 
 Optional: If you deleted your game icons/covers folder (because many of them are outdated) you should use `twcover` to download all the top game covers. Otherwise `tw ` or `twtop` will do it, but it takes more time and downloads less covers at the same time. 
 
