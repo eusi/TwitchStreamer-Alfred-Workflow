@@ -58,7 +58,7 @@ Optional: If you deleted your game icons/covers folder (because many of them are
 
 Required: [Alfred](https://www.alfredapp.com/), [Streamlink](https://streamlink.github.io/index.html) and [VLC](http://www.videolan.org/vlc/index.html) or [mpv](https://mpv.io/) or [IINA](https://iina.io). 
 
-Made/Tested in/with OSX 10.15.7, Streamlink 2.4.0, VLC 3.0.16, PHP 7.3.11, AppleScript >2.5, Twitch API (Oct. 2021)
+Made/Tested in/with OSX 10.15.7 and macOS 12.4, Streamlink 2.4.0, VLC 3.0.16, PHP 7.3.11, AppleScript >2.5, Twitch API (Oct. 2021)
 
 Supports [`OneUpdater`](https://github.com/vitorgalvao/alfred-workflows/tree/master/OneUpdater)/AlleyOop/[Monkey Patch](http://www.alfredforum.com/topic/2218-monkey-patch-update-alfred-workflows-via-alleyoop/) (workflow updater).
 
@@ -90,6 +90,10 @@ GNU General Public License version 3
 
 
 ## Changelog
+
+### 2.01
+
+* Small update to make it work under Alfred 4
 
 ### 2.00
 

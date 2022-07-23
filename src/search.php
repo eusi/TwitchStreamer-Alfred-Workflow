@@ -223,7 +223,9 @@
     global $twitchAPI;
     global $sessionFile;
 
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
 
     $json = file_get_contents( $sessionFile );
     $jsonDecoded = json_decode($json, true);

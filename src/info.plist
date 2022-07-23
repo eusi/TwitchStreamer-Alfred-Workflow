@@ -92,9 +92,40 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>TwitchStreamer v2.00</string>
+	<string>TwitchStreamer v2.01</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>PATH="/usr/local/bin:$PATH"
+
+if [ `which iina` ]; then
+  streamlink -p iina {query} best &amp;
+elif [ `which vlc` ]; then
+  streamlink -p vlc {query} best &amp;
+elif [ `which mpv` ]; then
+  streamlink -p mpv {query} best &amp;
+fi</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>A075C7E9-F64E-4E23-BC19-EF2E6F05A60C</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -102,6 +133,8 @@
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -167,38 +200,7 @@ echo $w-&gt;toxml();</string>
 			<key>uid</key>
 			<string>6F23080D-EAF4-458E-89F7-FA76D83BCDCE</string>
 			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>0</integer>
-				<key>script</key>
-				<string>PATH="/usr/local/bin:$PATH"
-
-if [ `which iina` ]; then
-  streamlink -p iina {query} best &amp;
-elif [ `which vlc` ]; then
-  streamlink -p vlc {query} best &amp;
-elif [ `which mpv` ]; then
-  streamlink -p mpv {query} best &amp;
-fi</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>A075C7E9-F64E-4E23-BC19-EF2E6F05A60C</string>
-			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -288,6 +290,8 @@ fi #find</string>
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -357,7 +361,7 @@ echo $w-&gt;toxml();</string>
 			<key>uid</key>
 			<string>8CF1B7C5-96CE-4B5A-9F95-7462E4753234</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -397,6 +401,8 @@ function run(argv)
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -463,7 +469,7 @@ echo $w-&gt;toxml();</string>
 			<key>uid</key>
 			<string>AC42EC64-23A5-4819-855C-5B744E106CF3</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -493,6 +499,8 @@ echo $w-&gt;toxml();</string>
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -559,7 +567,7 @@ echo $w-&gt;toxml();</string>
 			<key>uid</key>
 			<string>C79B81D0-BA17-4A68-BDDF-9F6AC2E7F520</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 	</array>
 	<key>readme</key>
@@ -586,9 +594,9 @@ examples:
 		<key>30D65DA2-C051-4A58-A336-24538354E4D0</key>
 		<dict>
 			<key>xpos</key>
-			<integer>600</integer>
+			<real>600</real>
 			<key>ypos</key>
-			<integer>350</integer>
+			<real>350</real>
 		</dict>
 		<key>40154537-D021-4D43-8D17-2B337F275F99</key>
 		<dict>
@@ -597,55 +605,59 @@ examples:
 			<key>note</key>
 			<string>OneUpdater</string>
 			<key>xpos</key>
-			<integer>600</integer>
+			<real>600</real>
 			<key>ypos</key>
-			<integer>130</integer>
+			<real>130</real>
 		</dict>
 		<key>6F23080D-EAF4-458E-89F7-FA76D83BCDCE</key>
 		<dict>
 			<key>xpos</key>
-			<integer>200</integer>
+			<real>200</real>
 			<key>ypos</key>
-			<integer>20</integer>
+			<real>20</real>
 		</dict>
 		<key>8CF1B7C5-96CE-4B5A-9F95-7462E4753234</key>
 		<dict>
 			<key>xpos</key>
-			<integer>200</integer>
+			<real>200</real>
 			<key>ypos</key>
-			<integer>130</integer>
+			<real>130</real>
 		</dict>
 		<key>93749124-28BB-4E7E-AD32-8B1CD790BE08</key>
 		<dict>
 			<key>xpos</key>
-			<integer>400</integer>
+			<real>400</real>
 			<key>ypos</key>
-			<integer>240</integer>
+			<real>240</real>
 		</dict>
 		<key>A075C7E9-F64E-4E23-BC19-EF2E6F05A60C</key>
 		<dict>
 			<key>xpos</key>
-			<integer>400</integer>
+			<real>400</real>
 			<key>ypos</key>
-			<integer>20</integer>
+			<real>20</real>
 		</dict>
 		<key>AC42EC64-23A5-4819-855C-5B744E106CF3</key>
 		<dict>
 			<key>xpos</key>
-			<integer>200</integer>
+			<real>200</real>
 			<key>ypos</key>
-			<integer>240</integer>
+			<real>240</real>
 		</dict>
 		<key>C79B81D0-BA17-4A68-BDDF-9F6AC2E7F520</key>
 		<dict>
 			<key>xpos</key>
-			<integer>200</integer>
+			<real>200</real>
 			<key>ypos</key>
-			<integer>350</integer>
+			<real>350</real>
 		</dict>
 	</dict>
+	<key>userconfigurationconfig</key>
+	<array/>
+	<key>variablesdontexport</key>
+	<array/>
 	<key>version</key>
-	<string>2.00</string>
+	<string>2.01</string>
 	<key>webaddress</key>
 	<string>https://github.com/eusi/TwitchStreamer-Alfred-Workflow</string>
 </dict>
