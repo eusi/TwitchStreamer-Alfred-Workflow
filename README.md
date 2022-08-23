@@ -91,6 +91,10 @@ GNU General Public License version 3
 
 ## Changelog
 
+### 2.02
+
+* Small update to make it work under Alfred 5
+
 ### 2.01
 
 * Small update to make it work under Alfred 4

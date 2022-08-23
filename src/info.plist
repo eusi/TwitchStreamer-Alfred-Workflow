@@ -92,7 +92,7 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>TwitchStreamer v2.01</string>
+	<string>TwitchStreamer v2.02</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -205,6 +205,86 @@ echo $w-&gt;toxml();</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>126</integer>
+				<key>keyword</key>
+				<string>tw</string>
+				<key>queuedelaycustom</key>
+				<integer>1</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Searching for stream(s) on twitch.tv ...</string>
+				<key>script</key>
+				<string>require('workflows.php');
+require('search.php');
+
+//number of streams sorted by number of viewers descending (max 100)
+$limit = 30; 
+$q = urlencode( "{query}" );
+
+$w = new Workflows();
+$s = searchStream( $q, $limit );
+
+if($s != null) {
+	foreach ($s as $key =&gt; $sele) {
+		$icon = checkCover( $sele['game'] );
+    		$w-&gt;result(	'', 
+					$sele['url'], 
+					$sele['streamer'] . '   -   ' . $sele['title'], 
+					$sele['game'], 
+					$icon,
+					'yes' 
+				  );
+	}
+}
+elseif( strlen( $q ) &lt; 3 ) {
+	 $w-&gt;result( '', '', 'Please wait for result or make sure you have ' . 
+              'typed in at least 3 letters.', 
+              'Searching for stream(s) on twitch.tv ...','icon.png','no' );
+}
+else {
+	 $w-&gt;result( '', '', 'No stream or game found! Try another!', 
+     'Stream is probably offline or you made a typo.', 'icon.png', 'no' );
+}
+echo $w-&gt;toxml();</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Search live streams on twitch.tv (game or channel).</string>
+				<key>title</key>
+				<string>Search for Streams (e.g. tw channel)</string>
+				<key>type</key>
+				<integer>1</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>8CF1B7C5-96CE-4B5A-9F95-7462E4753234</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
@@ -282,86 +362,6 @@ fi #find</string>
 			<string>40154537-D021-4D43-8D17-2B337F275F99</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<false/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>escaping</key>
-				<integer>126</integer>
-				<key>keyword</key>
-				<string>tw</string>
-				<key>queuedelaycustom</key>
-				<integer>1</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<false/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string>Searching for stream(s) on twitch.tv ...</string>
-				<key>script</key>
-				<string>require('workflows.php');
-require('search.php');
-
-//number of streams sorted by number of viewers descending (max 100)
-$limit = 30; 
-$q = urlencode( "{query}" );
-
-$w = new Workflows();
-$s = searchStream( $q, $limit );
-
-if($s != null) {
-	foreach ($s as $key =&gt; $sele) {
-		$icon = checkCover( $sele['game'] );
-    		$w-&gt;result(	'', 
-					$sele['url'], 
-					$sele['streamer'] . '   -   ' . $sele['title'], 
-					$sele['game'], 
-					$icon,
-					'yes' 
-				  );
-	}
-}
-elseif( strlen( $q ) &lt; 3 ) {
-	 $w-&gt;result( '', '', 'Please wait for result or make sure you have ' . 
-              'typed in at least 3 letters.', 
-              'Searching for stream(s) on twitch.tv ...','icon.png','no' );
-}
-else {
-	 $w-&gt;result( '', '', 'No stream or game found! Try another!', 
-     'Stream is probably offline or you made a typo.', 'icon.png', 'no' );
-}
-echo $w-&gt;toxml();</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string>Search live streams on twitch.tv (game or channel).</string>
-				<key>title</key>
-				<string>Search for Streams (e.g. tw channel)</string>
-				<key>type</key>
-				<integer>1</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>8CF1B7C5-96CE-4B5A-9F95-7462E4753234</string>
-			<key>version</key>
-			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -657,7 +657,7 @@ examples:
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>2.01</string>
+	<string>2.02</string>
 	<key>webaddress</key>
 	<string>https://github.com/eusi/TwitchStreamer-Alfred-Workflow</string>
 </dict>

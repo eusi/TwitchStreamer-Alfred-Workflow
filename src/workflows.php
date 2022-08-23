@@ -3,7 +3,7 @@
 * Name: 		Workflows
 * Description: 	This PHP class object provides several useful functions for retrieving, parsing,
 * 				and formatting data to be used with Alfred 2 Workflows.
-* Author: 		David Ferguson (@jdfwarrior)
+* Author: 		 (@jdfwarrior)
 * Revised: 		6/6/2013
 * Version:		0.3.3
 */
@@ -38,23 +38,36 @@ class Workflows {
 			$this->bundle = $bundleid;
 		endif;
 
+        /* Alfred 2 */
 		$this->cache = $this->home. "/Library/Caches/com.runningwithcrayons.Alfred-2/Workflow Data/".$this->bundle;
 		$this->data  = $this->home. "/Library/Application Support/Alfred 2/Workflow Data/".$this->bundle;
 
+        /* Alfred 3 */
 		if ( !file_exists( $this->cache ) ):
 			$this->cache = $this->home. "/Library/Caches/com.runningwithcrayons.Alfred-3/Workflow Data/".$this->bundle;
 		endif;
-		
 		if ( !file_exists( $this->data ) ):
 			$this->data  = $this->home. "/Library/Application Support/Alfred 3/Workflow Data/".$this->bundle;
+		endif;
+
+        /* Alfred 4+ */
+		if ( !file_exists( $this->cache ) ):
+			$this->cache = $this->home. "/Library/Caches/com.runningwithcrayons.Alfred/Workflow Data/".$this->bundle;
+		endif;
+		if ( !file_exists( $this->data ) ):
+			$this->data = getenv('alfred_workflow_data');
+	        if (!$this->data) {
+	            $this->data = getenv('HOME').'/Library/Application Support/Alfred/Workflow Data/'.$this->bundle;
+	            putenv('alfred_workflow_data="'.$this->data.'"');
+	        }
 		endif;
 
 		if ( !file_exists( $this->cache ) ):
 			exec("mkdir '".$this->cache."'");
 		endif;
 
-		if ( !file_exists( $this->data ) ):
-			exec("mkdir '".$this->data."'");
+		if ( !file_exists( $this->data ) ):  //if (!is_dir($this->data))
+			exec("mkdir '".$this->data."'");  //mkdir($this->data);
 		endif;
 
 		$this->results = array();
