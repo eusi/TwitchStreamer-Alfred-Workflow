@@ -56,7 +56,10 @@ Optional: If you deleted your game icons/covers folder (because many of them are
 
 ## Download
 
-Required: [Alfred](https://www.alfredapp.com/), [Streamlink](https://streamlink.github.io/index.html) and [VLC](http://www.videolan.org/vlc/index.html) or [mpv](https://mpv.io/) or [IINA](https://iina.io). 
+Required: [Alfred](https://www.alfredapp.com/), [Streamlink](https://streamlink.github.io/index.html) and [VLC](http://www.videolan.org/vlc/index.html) or [mpv](https://mpv.io/) or [IINA](https://iina.io).
+
+Required since macOS Monterey:
+Open a [Terminal](https://support.apple.com/en-gb/guide/terminal/apd5265185d-f365-44cb-8b09-71a064a42125/mac), install [Homebrew](https://brew.sh/) and run `brew install php`
 
 Made/Tested in/with OSX 10.15.7 and macOS 12.4, Streamlink 2.4.0, VLC 3.0.16, PHP 7.3.11, AppleScript >2.5, Twitch API (Oct. 2021)
 
