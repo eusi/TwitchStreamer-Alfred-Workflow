@@ -94,6 +94,12 @@ GNU General Public License version 3
 
 ## Changelog
 
+### 2.1
+
+* Added viewer counts to TOP games and searched streams
+* Added search for game IDs (via twgames)
+* Renamed some API functions
+
 ### 2.02
 
 * Small update to make it work under Alfred 5

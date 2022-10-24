@@ -84,15 +84,28 @@
 				<false/>
 			</dict>
 		</array>
+		<key>FE518DEF-DCAE-4CB3-B8EF-62DB826AF22B</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>A075C7E9-F64E-4E23-BC19-EF2E6F05A60C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 	</dict>
 	<key>createdby</key>
 	<string>Christoph Friegel</string>
 	<key>description</key>
-	<string>Check who is streaming on Twitch.tv and watch your favorite stream via Livestreamer on VLC or mpv.</string>
+	<string>Check who is streaming on Twitch.tv and watch your favorite stream via Livestreamer on VLC, IINA or mpv.</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>TwitchStreamer v2.02</string>
+	<string>TwitchStreamer v2.1</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -162,7 +175,7 @@ $limit = 20;
 
 init();
 $w = new Workflows();
-$s = getTwitchStreams( $limit );
+$s = getTopStreams( $limit );
 
 if($s != null) {
 	foreach ($s as $key =&gt; $sele) {
@@ -237,8 +250,9 @@ require('search.php');
 $limit = 30; 
 $q = urlencode( "{query}" );
 
+init();
 $w = new Workflows();
-$s = searchStream( $q, $limit );
+$s = getSearchedStream( $q, $limit );
 
 if($s != null) {
 	foreach ($s as $key =&gt; $sele) {
@@ -246,7 +260,7 @@ if($s != null) {
     		$w-&gt;result(	'', 
 					$sele['url'], 
 					$sele['streamer'] . '   -   ' . $sele['title'], 
-					$sele['game'], 
+					$sele['viewers'] . ' Viewers - ' . $sele['game'],
 					$icon,
 					'yes' 
 				  );
@@ -366,6 +380,87 @@ fi #find</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>126</integer>
+				<key>keyword</key>
+				<string>twgameid</string>
+				<key>queuedelaycustom</key>
+				<integer>1</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Searching for stream(s) on twitch.tv ...</string>
+				<key>script</key>
+				<string>require('workflows.php');
+require('search.php');
+
+//number of streams sorted by number of viewers descending (max 100)
+$limit = 20; 
+$q = urlencode( "{query}" );
+
+init();
+$w = new Workflows();
+$s = getStreamByGameId( $q, $limit );
+
+if($s != null) {
+	foreach ($s as $key =&gt; $sele) {
+		$icon = checkCover( $sele['game'] );
+    		$w-&gt;result(	'', 
+					$sele['url'], 
+					$sele['streamer'] . '   -   ' . $sele['title'], 
+					$sele['viewers'] . ' Viewers - ' . $sele['game'],
+					$icon,
+					'yes' 
+				  );
+	}
+}
+elseif( strlen( $q ) &lt; 3 ) {
+	 $w-&gt;result( '', '', 'Please wait for result or make sure you have ' . 
+              'typed in at least 3 letters.', 
+              'Searching for stream(s) on twitch.tv ...','icon.png','no' );
+}
+else {
+	 $w-&gt;result( '', '', 'No stream or game found! Try another!', 
+     'Stream is probably offline or you made a typo.', 'icon.png', 'no' );
+}
+echo $w-&gt;toxml();</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>This is used by twgames...</string>
+				<key>title</key>
+				<string>Show streams by game IDs</string>
+				<key>type</key>
+				<integer>1</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>FE518DEF-DCAE-4CB3-B8EF-62DB826AF22B</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
@@ -378,7 +473,7 @@ function run(argv)
     // Get major version number
     var v = $.getenv('alfred_version').split('.')[0];
 
-    Application('Alfred ' + v).search('tw ' + argv[0]);
+    Application('Alfred ' + v).search('twgameid ' + argv[0]);
 }</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
@@ -428,16 +523,19 @@ require('search.php');
 //number of games sorted by viewers (max 100)
 $limit = 15; 
 
+init();
 $w = new Workflows();
 $s = getTopGames($limit);
+
+
 
 if($s != null) {
 	foreach ($s as $key =&gt; $sele) {
 		$icon = checkCover( $sele['game'] );
     		$w-&gt;result(	'', 
-					$sele['game'],
+					$sele['id'],
 	                 $sele['game'],
-					$sele['top'], 
+					$sele['viewers'] . "+ Viewers - " . $sele['top'],
 					$icon, //'icon.png', 
 					'yes',
                      '1'
@@ -527,8 +625,9 @@ require('search.php');
 //recommended and max: 100
 $limit = 100;
 
+init();
 $w = new Workflows();
-$g = getTwitchGames( $limit );
+$g = getGameCovers( $limit );
 
 if($g != null) {
 	$inc = 0;
@@ -573,11 +672,12 @@ echo $w-&gt;toxml();</string>
 	<key>readme</key>
 	<string>keywords and description:
 ————————————————————————————————
-twtop   = top live streams on twitch.tv
+twtop = top live streams on twitch.tv
 twgames = top streamed games on twitch.tv
-tw      = search for a specific stream (game or streamer/channel)
+tw = search for a specific live stream (game or streamer/channel)
 
-optional: 
+optional:
+twgameid = search for live streams based on the game ID
 twcover = download game icons - preloading the covers speeds up your user experience
 
 examples:
@@ -585,7 +685,7 @@ examples:
 ‚twtop’
 
 ‚tw warcraft‘ (searches for streams of „world of warcraft“ or „warcraft3“ as well as streams of a streamer who is called like „warcraftBoy“ or its stream title contains „warcraft“)
- 
+
 ‚twgames‘
 
 ‚twcover‘</string>
@@ -596,7 +696,7 @@ examples:
 			<key>xpos</key>
 			<real>600</real>
 			<key>ypos</key>
-			<real>350</real>
+			<real>470</real>
 		</dict>
 		<key>40154537-D021-4D43-8D17-2B337F275F99</key>
 		<dict>
@@ -628,7 +728,7 @@ examples:
 			<key>xpos</key>
 			<real>400</real>
 			<key>ypos</key>
-			<real>240</real>
+			<real>360</real>
 		</dict>
 		<key>A075C7E9-F64E-4E23-BC19-EF2E6F05A60C</key>
 		<dict>
@@ -642,14 +742,21 @@ examples:
 			<key>xpos</key>
 			<real>200</real>
 			<key>ypos</key>
-			<real>240</real>
+			<real>360</real>
 		</dict>
 		<key>C79B81D0-BA17-4A68-BDDF-9F6AC2E7F520</key>
 		<dict>
 			<key>xpos</key>
 			<real>200</real>
 			<key>ypos</key>
-			<real>350</real>
+			<real>475</real>
+		</dict>
+		<key>FE518DEF-DCAE-4CB3-B8EF-62DB826AF22B</key>
+		<dict>
+			<key>xpos</key>
+			<real>200</real>
+			<key>ypos</key>
+			<real>245</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
@@ -657,7 +764,7 @@ examples:
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>2.02</string>
+	<string>2.1</string>
 	<key>webaddress</key>
 	<string>https://github.com/eusi/TwitchStreamer-Alfred-Workflow</string>
 </dict>

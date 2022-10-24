@@ -17,12 +17,12 @@
   }
 
   /**
-   * Get streams from Twitch.tv sorted by number of viewers descending.
+   * Get TOP streams from Twitch.tv sorted by number of viewers descending.
    * This is used for e.g. twtop
    * 
    * @param int $limit - maximum number of results
    */
-  function getTwitchStreams( $limit ) {
+  function getTopStreams( $limit ) {
 
     global $twitchURL;
 
@@ -54,7 +54,7 @@
   }
 
   /**
-   * Get top games.
+   * Get TOP games.
    * This is used for e.g. twgames
    * 
    * @param int $limit - maximum number of results
@@ -75,6 +75,8 @@
         foreach ($data->data as $stream) {
           $games[$i]["game"] = $stream->name;
           $games[$i]["top"] = "#".$i;
+          $games[$i]["id"] = $stream->id;
+          $games[$i]["viewers"] = getViewerCountByGameId( $stream->id );
           $i++;
         }
       }
@@ -92,31 +94,69 @@
    * @param String $q - stream or game name or at least a part of it
    * @param int $limit - maximum number of results
    */
-  function searchStream( $q, $limit ) {
+  function getSearchedStream( $q, $limit ) {
 
     global $twitchURL;
 
-    $ch = getDataByUrl( "/search/channels?query=" . $q . "&first=" . $limit);
+    $ch = getDataByUrl( "/search/channels?first=" . $limit . "&live_only=true&query=" . $q);
     $data = curl_exec( $ch );
     $info = curl_getinfo( $ch );
     curl_close( $ch );
 
     if ($info['http_code'] == 200) {
       $data = json_decode($data);
-      $games = array();
+      $channel = array();
 
       if($data != null) {
         $i = 0;
         foreach ($data->data as $stream) {
-          $games[$i]["title"] = $stream->title;
-          $games[$i]["streamer"] = $stream->display_name;
-          $games[$i]["viewers"] = "";//$stream->viewer_count;
-          $games[$i]["game"] = $stream->game_name;
-          $games[$i]["url"] = $twitchURL . $stream->broadcaster_login;
+          $channel[$i]["title"] = $stream->title;
+          $channel[$i]["streamer"] = $stream->display_name;
+          $channel[$i]["viewers"] = getViewerCountByBroadcasterLogin( $stream->broadcaster_login );
+          $channel[$i]["game"] = $stream->game_name;
+          $channel[$i]["url"] = $twitchURL . $stream->broadcaster_login;
           $i++;
         }
       }
-      return $games;
+      return $channel;
+    }
+
+    echo 'Failed with ' . $info['http_code'];
+    return null;
+  }
+
+  /**
+   * Get a list of games sorted by number of viewers descending.
+   * This is used for e.g. twcover
+   * 
+   * @param int $limit - maximum number of results
+   * @param int $game_id - game id
+   */
+  function getStreamByGameId( $game_id, $limit ) {
+
+    global $twitchURL;
+
+    $ch = getDataByUrl( "/streams?first=" . $limit . "&game_id=" . $game_id );
+    $data = curl_exec( $ch );
+    $info = curl_getinfo( $ch );
+    curl_close( $ch );
+
+    if ($info['http_code'] == 200) {
+      $data = json_decode($data);
+      $channel = array();
+
+      if($data != null) {
+        $i = 0;
+        foreach ($data->data as $stream) {
+          $channel[$i]["title"] = $stream->title;
+          $channel[$i]["streamer"] = $stream->user_name;
+          $channel[$i]["viewers"] = $stream->viewer_count;
+          $channel[$i]["game"] = $stream->game_name;
+          $channel[$i]["url"] = $twitchURL . $stream->user_login;
+          $i++;
+        }
+      }
+      return $channel;
     }
 
     echo 'Failed with ' . $info['http_code'];
@@ -129,7 +169,7 @@
    * 
    * @param int $limit - maximum number of results
    */
-  function getTwitchGames( $limit ) {
+  function getGameCovers( $limit ) {
 
     $ch = getDataByUrl( "/games/top?first=" . $limit );
     $data = curl_exec( $ch );
@@ -152,6 +192,67 @@
 
     echo 'Failed with ' . $info['http_code'];
     return null;
+  }
+
+  /**
+   * Get viewer count by streamer name
+   * This is used by getSearchedStream()
+   * 
+   * @param int $broadcaster_login - name/login of the streamer
+   */
+  function getViewerCountByBroadcasterLogin( $broadcaster_login="" ) {
+
+    $ch = getDataByUrl( "/streams?user_login=" . $broadcaster_login );
+    
+    $data = curl_exec( $ch );
+    $info = curl_getinfo( $ch );
+    curl_close( $ch );
+
+    if ($info['http_code'] == 200) {
+      $data = json_decode($data);
+
+      if($data != null) {
+        $i = 0;
+        foreach ($data->data as $stream) {
+          return $stream->viewer_count;
+        }
+      }
+      return "-";
+    }
+
+    echo 'Failed with ' . $info['http_code'];
+    return "-";
+  }
+
+  /**
+   * Get viewer count by game id
+   * This is used by getTopGames()
+   * 
+   * @param int $game_id - id of the game
+   */
+  function getViewerCountByGameId( $game_id=0 ) {
+
+    $count = 0; //need to count it manually, using 20 channels for this
+    $ch = getDataByUrl( "/streams?first=20&game_id=" . $game_id );
+    
+    $data = curl_exec( $ch );
+    $info = curl_getinfo( $ch );
+    curl_close( $ch );
+
+    if ($info['http_code'] == 200) {
+      $data = json_decode($data);
+
+      if($data != null) {
+        $i = 0;
+        foreach ($data->data as $stream) {
+          $count += $stream->viewer_count;
+        }
+      }
+        return $count;
+    }
+
+    echo 'Failed with ' . $info['http_code'];
+    return $count;
   }
 
   /**
@@ -336,7 +437,7 @@
    * 
    * @param String $url
    */
-  function url_get_contents($url) {
+  function url_get_contents( $url ) {
 
     if (function_exists('curl_exec')) { 
       $conn = curl_init($url);
