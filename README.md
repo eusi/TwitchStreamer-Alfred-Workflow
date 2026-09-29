@@ -5,9 +5,9 @@ TwitchStreamer Workflow for [Alfred](http://www.alfredapp.com)
 ==============================
 
 ## Summary
-* Search Twitch.tv streams and watch via [VLC](http://www.videolan.org/vlc/index.html) or [mpv](https://mpv.io/) or [IINA](https://iina.io) ([Streamlink (former Livestreamer)](https://streamlink.github.io/index.html) required)
+* Search Twitch.tv streams and watch via [VLC](http://www.videolan.org/vlc/index.html), [mpv](https://mpv.io/), or [IINA](https://iina.io) with [Streamlink](https://streamlink.github.io/index.html). Without Streamlink or a player, streams open in the browser.
 
-* keywords: `tw`, `twtop`, `twgames`, optional: twcover`
+* keywords: `tw`, `twtop`, `twgames`, `twgameid`, `twauth`, optional: `twcover`
 
 * `twtop`: show top live streams (sorted by number of current viewers)
 
@@ -16,6 +16,8 @@ TwitchStreamer Workflow for [Alfred](http://www.alfredapp.com)
 * `tw`: search specific live channel/game
 
 * `twcover`: download/preload game icons for better user experience
+
+* `twauth`: connect to Twitch once; Alfred opens the browser and copies the activation code
 
 * browse philosophy: `twtop` or `twgames` for getting the most wanted streams on twitch.tv
 
@@ -26,11 +28,11 @@ TwitchStreamer Workflow for [Alfred](http://www.alfredapp.com)
 
 Check who is streaming on Twitch.tv (category gaming) and watch your favorite stream via [Streamlink](https://streamlink.github.io/index.html) on [VLC](http://www.videolan.org/vlc/index.html) or [mpv](https://mpv.io/) or [IINA](https://iina.io) (no lags anymore, thanks to buffering).
 
-The main keyword is `tw` and the second word is the game or stream you want to watch (examples: `tw voyboy` or `tw league of legends` or also simply `tw league`). Alternative: Use keyword `twtop` to see the current TOP streams or `twgames` for the current TOP streamed games. Limit of streams is changable via specific workflow ($limit-variable).
+The main keyword is `tw` and the second word is the game or stream you want to watch (examples: `tw voyboy` or `tw league of legends` or also simply `tw league`). Alternative: Use keyword `twtop` to see the current TOP streams or `twgames` for the current TOP streamed games. Stream limits are set in the Go workflow.
 
 With `enter` you can open the stream via [Streamlink](https://streamlink.github.io/index.html) on [VLC](http://www.videolan.org/vlc/index.html) or [mpv](https://mpv.io/) or [IINA](https://iina.io). 
 
-The streamer list is sorted by number of viewers descending. The quality of the stream is "high". If you want to change it to best (e.g.), feel free to open the existing "Terminal Command" (alfred, workflow-window) and modify the streamlink line.
+The streamer list is sorted by number of viewers descending. Streamlink uses the "best" quality.
 
 Optional: If you deleted your game icons/covers folder (because many of them are outdated) you should use `twcover` to download all the top game covers. Otherwise `tw ` or `twtop` will do it, but it takes more time and downloads less covers at the same time. 
 
@@ -56,14 +58,9 @@ Optional: If you deleted your game icons/covers folder (because many of them are
 
 ## Download
 
-Required: [Alfred](https://www.alfredapp.com/), [Streamlink](https://streamlink.github.io/index.html) and [VLC](http://www.videolan.org/vlc/index.html) or [mpv](https://mpv.io/) or [IINA](https://iina.io).
+Required: [Alfred](https://www.alfredapp.com/). For playback through a local player, install [Streamlink](https://streamlink.github.io/index.html) and [VLC](http://www.videolan.org/vlc/index.html), [mpv](https://mpv.io/), or [IINA](https://iina.io). Without Streamlink or a player, the stream opens in the browser.
 
-Required since macOS Monterey:
-Open a [Terminal](https://support.apple.com/en-gb/guide/terminal/apd5265185d-f365-44cb-8b09-71a064a42125/mac), install [Homebrew](https://brew.sh/) and run `brew install php`
-
-Made/Tested in/with OSX 10.15.7 and macOS 12.4, Streamlink 2.4.0, VLC 3.0.16, PHP 7.3.11, AppleScript >2.5, Twitch API (Oct. 2021)
-
-Supports [`OneUpdater`](https://github.com/vitorgalvao/alfred-workflows/tree/master/OneUpdater)/AlleyOop/[Monkey Patch](http://www.alfredforum.com/topic/2218-monkey-patch-update-alfred-workflows-via-alleyoop/) (workflow updater).
+The workflow bundles a universal Go binary for Apple Silicon (arm64) and Intel (x86_64). PHP and Homebrew PHP are not required. After installation, run `twauth` in Alfred once to connect to Twitch.
 
 **[DOWNLOAD HERE](https://raw.githubusercontent.com/eusi/TwitchStreamer-Alfred-Workflow/master/workflow/TwitchStreamer.alfredworkflow)**
 
@@ -93,6 +90,12 @@ GNU General Public License version 3
 
 
 ## Changelog
+
+### 3.0
+
+* Ported the workflow from PHP to Go with a universal arm64/x86_64 binary.
+* Switched Alfred Script Filters from XML to JSON.
+* Added Twitch Device Code authentication via `twauth` without a bundled client secret.
 
 ### 2.1
 

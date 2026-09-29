@@ -2,15 +2,17 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>bundleid</key>
-	<string>com.eusi.alfred.twitchstreamer</string>
+	<key>description</key>
+	<string>Check who is streaming on Twitch and watch your favorite streams via Streamlink in VLC, IINA, or mpv.</string>
+	<key>version</key>
+	<string>3.0</string>
 	<key>connections</key>
 	<dict>
-		<key>6F23080D-EAF4-458E-89F7-FA76D83BCDCE</key>
+		<key>C79B81D0-BA17-4A68-BDDF-9F6AC2E7F520</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>A075C7E9-F64E-4E23-BC19-EF2E6F05A60C</string>
+				<string>30D65DA2-C051-4A58-A336-24538354E4D0</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -32,11 +34,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>93749124-28BB-4E7E-AD32-8B1CD790BE08</key>
+		<key>FE518DEF-DCAE-4CB3-B8EF-62DB826AF22B</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>40154537-D021-4D43-8D17-2B337F275F99</string>
+				<string>A075C7E9-F64E-4E23-BC19-EF2E6F05A60C</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -45,11 +47,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>A075C7E9-F64E-4E23-BC19-EF2E6F05A60C</key>
+		<key>6F23080D-EAF4-458E-89F7-FA76D83BCDCE</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>40154537-D021-4D43-8D17-2B337F275F99</string>
+				<string>A075C7E9-F64E-4E23-BC19-EF2E6F05A60C</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -71,24 +73,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>C79B81D0-BA17-4A68-BDDF-9F6AC2E7F520</key>
+		<key>B7284834-A955-4E39-A064-9713E48A7D1A</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>30D65DA2-C051-4A58-A336-24538354E4D0</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>FE518DEF-DCAE-4CB3-B8EF-62DB826AF22B</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>A075C7E9-F64E-4E23-BC19-EF2E6F05A60C</string>
+				<string>D842B32A-A0F6-48A6-A7D5-562851366ABC</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -98,673 +87,501 @@
 			</dict>
 		</array>
 	</dict>
-	<key>createdby</key>
-	<string>Christoph Friegel</string>
-	<key>description</key>
-	<string>Check who is streaming on Twitch.tv and watch your favorite stream via Livestreamer on VLC, IINA or mpv.</string>
+	<key>userconfigurationconfig</key>
+	<array/>
 	<key>disabled</key>
 	<false/>
-	<key>name</key>
-	<string>TwitchStreamer v2.1</string>
+	<key>readme</key>
+	<string>Check who is streaming on Twitch and watch your favorite streams via Streamlink in VLC, IINA, or mpv.
+
+## First-time setup
+
+Run `twauth` once to connect your Twitch account. Your browser opens automatically and the activation code is copied to the clipboard.
+
+## Keywords
+
+- `tw &lt;query&gt;` searches for live channels and games
+- `twtop` shows the top live streams
+- `twgames` shows the top streamed games
+- `twcover` preloads game covers</string>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>bundleid</key>
+	<string>com.eusi.alfred.twitchstreamer</string>
 	<key>objects</key>
 	<array>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>0</integer>
 				<key>script</key>
-				<string>PATH="/usr/local/bin:$PATH"
-
-if [ `which iina` ]; then
-  streamlink -p iina {query} best &amp;
-elif [ `which vlc` ]; then
-  streamlink -p vlc {query} best &amp;
-elif [ `which mpv` ]; then
-  streamlink -p mpv {query} best &amp;
-fi</string>
-				<key>scriptargtype</key>
+				<string>./twitchstreamer play &quot;$1&quot;</string>
+				<key>escaping</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
 				<string></string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
 				<key>type</key>
 				<integer>0</integer>
+				<key>concurrently</key>
+				<false/>
 			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>A075C7E9-F64E-4E23-BC19-EF2E6F05A60C</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<false/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>escaping</key>
-				<integer>127</integer>
-				<key>keyword</key>
-				<string>twtop</string>
-				<key>queuedelaycustom</key>
-				<integer>1</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<false/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string>Searching for streams on twitch.tv ...</string>
-				<key>script</key>
-				<string>require('workflows.php');
-require('search.php');
-
-//number of streams sorted by number of viewers descending (max 100)
-$limit = 20; 
-
-init();
-$w = new Workflows();
-$s = getTopStreams( $limit );
-
-if($s != null) {
-	foreach ($s as $key =&gt; $sele) {
-		$icon = checkCover( $sele['game'] );
-    		$w-&gt;result(	'', 
-					$sele['url'], 
-					$sele['streamer'] . '   -   ' . $sele['title'], 
-					$sele['viewers'] . ' Viewers - ' . $sele['game'], 
-					$icon,
-					'yes' 
-				  );
-	}
-}
-else {
-	 $w-&gt;result( '', '', 'No streams online? This is impossible!', 
-                 'Either you or twitch.tv is offline! Check your ' .
-                 'internet connection first.', 'icon.png', 'no' );
-}
-echo $w-&gt;toxml();</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string>List TOP live streams on twitch.tv.</string>
-				<key>title</key>
-				<string>Show TOP Streams</string>
-				<key>type</key>
-				<integer>1</integer>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>6F23080D-EAF4-458E-89F7-FA76D83BCDCE</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<false/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>escaping</key>
-				<integer>126</integer>
-				<key>keyword</key>
-				<string>tw</string>
-				<key>queuedelaycustom</key>
-				<integer>1</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<false/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string>Searching for stream(s) on twitch.tv ...</string>
-				<key>script</key>
-				<string>require('workflows.php');
-require('search.php');
-
-//number of streams sorted by number of viewers descending (max 100)
-$limit = 30; 
-$q = urlencode( "{query}" );
-
-init();
-$w = new Workflows();
-$s = getSearchedStream( $q, $limit );
-
-if($s != null) {
-	foreach ($s as $key =&gt; $sele) {
-		$icon = checkCover( $sele['game'] );
-    		$w-&gt;result(	'', 
-					$sele['url'], 
-					$sele['streamer'] . '   -   ' . $sele['title'], 
-					$sele['viewers'] . ' Viewers - ' . $sele['game'],
-					$icon,
-					'yes' 
-				  );
-	}
-}
-elseif( strlen( $q ) &lt; 3 ) {
-	 $w-&gt;result( '', '', 'Please wait for result or make sure you have ' . 
-              'typed in at least 3 letters.', 
-              'Searching for stream(s) on twitch.tv ...','icon.png','no' );
-}
-else {
-	 $w-&gt;result( '', '', 'No stream or game found! Try another!', 
-     'Stream is probably offline or you made a typo.', 'icon.png', 'no' );
-}
-echo $w-&gt;toxml();</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string>Search live streams on twitch.tv (game or channel).</string>
-				<key>title</key>
-				<string>Search for Streams (e.g. tw channel)</string>
-				<key>type</key>
-				<integer>1</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>8CF1B7C5-96CE-4B5A-9F95-7462E4753234</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>0</integer>
-				<key>script</key>
-				<string>readonly local_file='info.plist' # Local file to compare to remote_file
-readonly remote_file='https://raw.githubusercontent.com/eusi/TwitchStreamer-Alfred-Workflow/master/src/info.plist' # Remote file (URL) to compare to local_file
-readonly workflow_url='https://raw.githubusercontent.com/eusi/TwitchStreamer-Alfred-Workflow/master/workflow/TwitchStreamer.alfredworkflow' # URL to directly download workflow or workflow download page
-readonly workflow_type='workflow' # Either 'workflow' if workflow_url points to direct download, or 'page' if it points to download page
-readonly frequency_check='15' # Days between update checks
-
-# FROM HERE ON, CODE SHOULD BE LEFT UNTOUCHED UNLESS YOU KNOW WHAT YOU ARE DOING
-function abort {
-  echo "${1}" 1&gt;&amp;2
-  exit 1
-}
-
-function url_exists {
-  if curl --silent --location --output /dev/null --fail --range 0-0 "${1}"; then
-    return 0
-  else
-    return 1
-  fi
-}
-
-function notification {
-  local readonly terminal_notifier="$(find . -name terminal-notifier.app)"
-
-  if [[ -n "${terminal_notifier}" ]]; then
-    "${terminal_notifier}"/Contents/MacOS/terminal-notifier -title "${alfred_workflow_name}" -subtitle 'A new version is available' -message "${1}"
-  else
-    osascript -e "display notification \"${1}\" with title \"${alfred_workflow_name}\" subtitle \"A new version is available\""
-  fi
-}
-
-# Local sanity checks
-[[ ! -f "${local_file}" ]] &amp;&amp; abort "'local_file' ("${local_file}") appears to not point to an existing file."
-[[ ! "${workflow_type}" =~ ^(workflow|page)$ ]] &amp;&amp; abort "'workflow_type' ("${workflow_type}") needs to be one of 'workflow' or 'page'."
-[[ ! "${frequency_check}" =~ ^[0-9]+$ ]] &amp;&amp; abort "'frequency_check' ("${frequency_check}") appears to not be a number."
-
-# Check for updates
-if [[ $(find "${local_file}" -mtime +"${frequency_check}") ]]; then
-  if ! url_exists "${remote_file}"; then abort "'remote_file' ("${remote_file}") appears to not be reachable."; fi # Remote sanity check
-  
-  readonly tmp_file="$(mktemp)"
-  curl --silent --location --output "${tmp_file}" "${remote_file}"
-
-  if [[ "$(diff "${local_file}" "${tmp_file}")" ]]; then
-    if [[ "${workflow_type}" == 'page' ]]; then
-      notification 'Opening download page…'
-      open "${workflow_url}"
-    else
-      if url_exists "${workflow_url}"; then
-        notification 'Downloading and installing…'
-        curl --silent --location --output "${HOME}/Downloads/${alfred_workflow_name}.alfredworkflow" "${workflow_url}"
-        open "${HOME}/Downloads/${alfred_workflow_name}.alfredworkflow"
-      else
-        abort "'workflow_url' ("${workflow_url}") appears to not be reachable."
-      fi # url_exists
-    fi # workflow_type
-  else
-    touch "${local_file}" # Reset timer by touching local file
-  fi # diff
-fi #find</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>40154537-D021-4D43-8D17-2B337F275F99</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>escaping</key>
-				<integer>126</integer>
 				<key>keyword</key>
-				<string>twgameid</string>
-				<key>queuedelaycustom</key>
+				<string>twtop</string>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>queuedelayimmediatelyinitially</key>
 				<false/>
 				<key>queuedelaymode</key>
 				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>script</key>
+				<string>./twitchstreamer filter top</string>
 				<key>queuemode</key>
 				<integer>1</integer>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
 				<key>runningsubtext</key>
-				<string>Searching for stream(s) on twitch.tv ...</string>
-				<key>script</key>
-				<string>require('workflows.php');
-require('search.php');
-
-//number of streams sorted by number of viewers descending (max 100)
-$limit = 20; 
-$q = urlencode( "{query}" );
-
-init();
-$w = new Workflows();
-$s = getStreamByGameId( $q, $limit );
-
-if($s != null) {
-	foreach ($s as $key =&gt; $sele) {
-		$icon = checkCover( $sele['game'] );
-    		$w-&gt;result(	'', 
-					$sele['url'], 
-					$sele['streamer'] . '   -   ' . $sele['title'], 
-					$sele['viewers'] . ' Viewers - ' . $sele['game'],
-					$icon,
-					'yes' 
-				  );
-	}
-}
-elseif( strlen( $q ) &lt; 3 ) {
-	 $w-&gt;result( '', '', 'Please wait for result or make sure you have ' . 
-              'typed in at least 3 letters.', 
-              'Searching for stream(s) on twitch.tv ...','icon.png','no' );
-}
-else {
-	 $w-&gt;result( '', '', 'No stream or game found! Try another!', 
-     'Stream is probably offline or you made a typo.', 'icon.png', 'no' );
-}
-echo $w-&gt;toxml();</string>
-				<key>scriptargtype</key>
+				<string>Searching for streams on twitch.tv ...</string>
+				<key>title</key>
+				<string>Show TOP Streams</string>
+				<key>subtext</key>
+				<string>List TOP live streams on twitch.tv.</string>
+				<key>type</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
 				<string></string>
-				<key>subtext</key>
-				<string>This is used by twgames...</string>
-				<key>title</key>
-				<string>Show streams by game IDs</string>
-				<key>type</key>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>queuedelaycustom</key>
 				<integer>1</integer>
 				<key>withspace</key>
-				<true/>
+				<false/>
 			</dict>
+			<key>uid</key>
+			<string>6F23080D-EAF4-458E-89F7-FA76D83BCDCE</string>
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>FE518DEF-DCAE-4CB3-B8EF-62DB826AF22B</string>
 			<key>version</key>
 			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>tw</string>
 				<key>escaping</key>
-				<integer>102</integer>
+				<integer>126</integer>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttype</key>
+				<integer>0</integer>
 				<key>script</key>
-				<string>ObjC.import('stdlib');
+				<string>./twitchstreamer filter search &quot;$1&quot;</string>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>runningsubtext</key>
+				<string>Searching for stream(s) on twitch.tv ...</string>
+				<key>title</key>
+				<string>Search for Streams (e.g. tw channel)</string>
+				<key>subtext</key>
+				<string>Search live streams on twitch.tv (game or channel).</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>queuedelaycustom</key>
+				<integer>1</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>uid</key>
+			<string>8CF1B7C5-96CE-4B5A-9F95-7462E4753234</string>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>twgameid</string>
+				<key>escaping</key>
+				<integer>126</integer>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>./twitchstreamer filter gameid &quot;$1&quot;</string>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>runningsubtext</key>
+				<string>Searching for stream(s) on twitch.tv ...</string>
+				<key>title</key>
+				<string>Show streams by game IDs</string>
+				<key>subtext</key>
+				<string>This is used by twgames...</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>queuedelaycustom</key>
+				<integer>1</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>uid</key>
+			<string>FE518DEF-DCAE-4CB3-B8EF-62DB826AF22B</string>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>script</key>
+				<string>ObjC.import(&apos;stdlib&apos;);
 
 function run(argv) 
 {
     // Get major version number
-    var v = $.getenv('alfred_version').split('.')[0];
+    var v = $.getenv(&apos;alfred_version&apos;).split(&apos;.&apos;)[0];
 
-    Application('Alfred ' + v).search('twgameid ' + argv[0]);
+    Application(&apos;Alfred &apos; + v).search(&apos;twgameid &apos; + argv[0]);
 }</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
 				<key>scriptfile</key>
 				<string></string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
 				<key>type</key>
 				<integer>7</integer>
+				<key>concurrently</key>
+				<false/>
 			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>93749124-28BB-4E7E-AD32-8B1CD790BE08</string>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>escaping</key>
-				<integer>127</integer>
 				<key>keyword</key>
 				<string>twgames</string>
-				<key>queuedelaycustom</key>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>queuedelayimmediatelyinitially</key>
 				<false/>
 				<key>queuedelaymode</key>
 				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>script</key>
+				<string>./twitchstreamer filter games</string>
 				<key>queuemode</key>
 				<integer>1</integer>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
 				<key>runningsubtext</key>
 				<string>Searching for games on twitch.tv ...</string>
-				<key>script</key>
-				<string>require('workflows.php');
-require('search.php');
-
-//number of games sorted by viewers (max 100)
-$limit = 15; 
-
-init();
-$w = new Workflows();
-$s = getTopGames($limit);
-
-
-
-if($s != null) {
-	foreach ($s as $key =&gt; $sele) {
-		$icon = checkCover( $sele['game'] );
-    		$w-&gt;result(	'', 
-					$sele['id'],
-	                 $sele['game'],
-					$sele['viewers'] . "+ Viewers - " . $sele['top'],
-					$icon, //'icon.png', 
-					'yes',
-                     '1'
-				  );
-	}
-}
-else {
-	 $w-&gt;result( '', '', 'No streams online? This is impossible!', 
-                 'Either you or twitch.tv is offline! Check your ' .
-                 'internet connection first.', 'icon.png', 'no' );
-}
-
-echo $w-&gt;toxml();</string>
-				<key>scriptargtype</key>
+				<key>title</key>
+				<string>Show TOP Games</string>
+				<key>subtext</key>
+				<string>List TOP streamed games on twitch.tv.</string>
+				<key>type</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
 				<string></string>
-				<key>subtext</key>
-				<string>List TOP streamed games on twitch.tv.</string>
-				<key>title</key>
-				<string>Show TOP Games</string>
-				<key>type</key>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>queuedelaycustom</key>
 				<integer>1</integer>
 				<key>withspace</key>
 				<false/>
 			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
 			<string>AC42EC64-23A5-4819-855C-5B744E106CF3</string>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
 			<key>version</key>
 			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
 				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>title</key>
+				<string>TwitchStreamer</string>
+				<key>lastpathcomponent</key>
 				<false/>
 				<key>removeextension</key>
 				<false/>
 				<key>text</key>
 				<string>Downloaded game covers.</string>
-				<key>title</key>
-				<string>TwitchStreamer</string>
 			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
 			<key>uid</key>
 			<string>30D65DA2-C051-4A58-A336-24538354E4D0</string>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>escaping</key>
-				<integer>62</integer>
 				<key>keyword</key>
 				<string>twcover</string>
-				<key>queuedelaycustom</key>
+				<key>escaping</key>
+				<integer>62</integer>
+				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>queuedelayimmediatelyinitially</key>
 				<false/>
 				<key>queuedelaymode</key>
 				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>script</key>
+				<string>./twitchstreamer filter covers</string>
 				<key>queuemode</key>
 				<integer>1</integer>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
 				<key>runningsubtext</key>
-				<string>Downloading game covers... Please don't close and wait, it takes ~1 min.</string>
-				<key>script</key>
-				<string>require('workflows.php');
-require('search.php');
-
-//specify how many games should be browsed for icons
-//recommended and max: 100
-$limit = 100;
-
-init();
-$w = new Workflows();
-$g = getGameCovers( $limit );
-
-if($g != null) {
-	$inc = 0;
-	foreach ($g as $key =&gt; $gele) {
-		if( checkingCovers( $gele['name'] ) ) {
-			$inc++;
-		}
-	}
-	 $w-&gt;result('', '', 'JOB´S DONE. '. $inc . ' game covers downloaded.',
-                'Good job. You must not do this again! Unless you deleted'.
-                ' ALL your downloaded covers.', 
-			    'icon.png', 'yes' );
-}
-else {
-	 $w-&gt;result( '', '', 'Error.', 
-                 'Either you or twitch.tv is offline! Check your ' .
-                 'internet connection first.', 'icon.png', 'no' );
-}
-
-echo $w-&gt;toxml();</string>
-				<key>scriptargtype</key>
+				<string>Downloading game covers... Please don&apos;t close and wait, it takes ~1 min.</string>
+				<key>title</key>
+				<string>Download Game Icons</string>
+				<key>subtext</key>
+				<string>Preload top-game icons will speed up your regular usage.</string>
+				<key>type</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
 				<string></string>
-				<key>subtext</key>
-				<string>Preload top-game icons will speed up your regular usage.</string>
-				<key>title</key>
-				<string>Download Game Icons</string>
-				<key>type</key>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>queuedelaycustom</key>
 				<integer>1</integer>
 				<key>withspace</key>
 				<false/>
 			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
 			<string>C79B81D0-BA17-4A68-BDDF-9F6AC2E7F520</string>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
 			<key>version</key>
 			<integer>3</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>twauth</string>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>script</key>
+				<string>./twitchstreamer filter auth</string>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>runningsubtext</key>
+				<string>Twitch-Anmeldung vorbereiten ...</string>
+				<key>title</key>
+				<string>Mit Twitch verbinden</string>
+				<key>subtext</key>
+				<string>Twitch einmalig autorisieren.</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>queuedelaycustom</key>
+				<integer>1</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>uid</key>
+			<string>B7284834-A955-4E39-A064-9713E48A7D1A</string>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>uid</key>
+			<string>D842B32A-A0F6-48A6-A7D5-562851366ABC</string>
+			<key>version</key>
+			<integer>2</integer>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<true/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>./twitchstreamer auth</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+		</dict>
 	</array>
-	<key>readme</key>
-	<string>keywords and description:
-————————————————————————————————
-twtop = top live streams on twitch.tv
-twgames = top streamed games on twitch.tv
-tw = search for a specific live stream (game or streamer/channel)
-
-optional:
-twgameid = search for live streams based on the game ID
-twcover = download game icons - preloading the covers speeds up your user experience
-
-examples:
-————————————————————————————————
-‚twtop’
-
-‚tw warcraft‘ (searches for streams of „world of warcraft“ or „warcraft3“ as well as streams of a streamer who is called like „warcraftBoy“ or its stream title contains „warcraft“)
-
-‚twgames‘
-
-‚twcover‘</string>
+	<key>createdby</key>
+	<string>eusi</string>
+	<key>category</key>
+	<string>Internet</string>
 	<key>uidata</key>
 	<dict>
-		<key>30D65DA2-C051-4A58-A336-24538354E4D0</key>
-		<dict>
-			<key>xpos</key>
-			<real>600</real>
-			<key>ypos</key>
-			<real>470</real>
-		</dict>
-		<key>40154537-D021-4D43-8D17-2B337F275F99</key>
-		<dict>
-			<key>colorindex</key>
-			<integer>12</integer>
-			<key>note</key>
-			<string>OneUpdater</string>
-			<key>xpos</key>
-			<real>600</real>
-			<key>ypos</key>
-			<real>130</real>
-		</dict>
-		<key>6F23080D-EAF4-458E-89F7-FA76D83BCDCE</key>
-		<dict>
-			<key>xpos</key>
-			<real>200</real>
-			<key>ypos</key>
-			<real>20</real>
-		</dict>
-		<key>8CF1B7C5-96CE-4B5A-9F95-7462E4753234</key>
-		<dict>
-			<key>xpos</key>
-			<real>200</real>
-			<key>ypos</key>
-			<real>130</real>
-		</dict>
 		<key>93749124-28BB-4E7E-AD32-8B1CD790BE08</key>
 		<dict>
 			<key>xpos</key>
-			<real>400</real>
+			<integer>400</integer>
 			<key>ypos</key>
-			<real>360</real>
+			<integer>360</integer>
 		</dict>
 		<key>A075C7E9-F64E-4E23-BC19-EF2E6F05A60C</key>
 		<dict>
 			<key>xpos</key>
-			<real>400</real>
+			<integer>400</integer>
 			<key>ypos</key>
-			<real>20</real>
+			<integer>20</integer>
+		</dict>
+		<key>8CF1B7C5-96CE-4B5A-9F95-7462E4753234</key>
+		<dict>
+			<key>xpos</key>
+			<integer>200</integer>
+			<key>ypos</key>
+			<integer>130</integer>
+		</dict>
+		<key>30D65DA2-C051-4A58-A336-24538354E4D0</key>
+		<dict>
+			<key>xpos</key>
+			<integer>600</integer>
+			<key>ypos</key>
+			<integer>470</integer>
+		</dict>
+		<key>6F23080D-EAF4-458E-89F7-FA76D83BCDCE</key>
+		<dict>
+			<key>xpos</key>
+			<integer>200</integer>
+			<key>ypos</key>
+			<integer>20</integer>
 		</dict>
 		<key>AC42EC64-23A5-4819-855C-5B744E106CF3</key>
 		<dict>
 			<key>xpos</key>
-			<real>200</real>
+			<integer>200</integer>
 			<key>ypos</key>
-			<real>360</real>
+			<integer>360</integer>
 		</dict>
 		<key>C79B81D0-BA17-4A68-BDDF-9F6AC2E7F520</key>
 		<dict>
 			<key>xpos</key>
-			<real>200</real>
+			<integer>200</integer>
 			<key>ypos</key>
-			<real>475</real>
+			<integer>475</integer>
 		</dict>
 		<key>FE518DEF-DCAE-4CB3-B8EF-62DB826AF22B</key>
 		<dict>
 			<key>xpos</key>
-			<real>200</real>
+			<integer>200</integer>
 			<key>ypos</key>
-			<real>245</real>
+			<integer>245</integer>
+		</dict>
+		<key>B7284834-A955-4E39-A064-9713E48A7D1A</key>
+		<dict>
+			<key>xpos</key>
+			<integer>200</integer>
+			<key>ypos</key>
+			<integer>600</integer>
+		</dict>
+		<key>D842B32A-A0F6-48A6-A7D5-562851366ABC</key>
+		<dict>
+			<key>xpos</key>
+			<integer>400</integer>
+			<key>ypos</key>
+			<integer>600</integer>
 		</dict>
 	</dict>
-	<key>userconfigurationconfig</key>
-	<array/>
-	<key>variablesdontexport</key>
-	<array/>
-	<key>version</key>
-	<string>2.1</string>
+	<key>name</key>
+	<string>TwitchStreamer v3.0</string>
 	<key>webaddress</key>
 	<string>https://github.com/eusi/TwitchStreamer-Alfred-Workflow</string>
 </dict>
